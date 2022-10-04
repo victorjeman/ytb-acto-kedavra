@@ -1,7 +1,7 @@
 export const PageHeader = () => {
   return (
     <nav>
-      <a href="/">ActoKedavra</a>
+      <a href='/'>ActoKedavra</a>
     </nav>
-  );
-};
+  )
+}
