@@ -4,6 +4,8 @@ function App() {
   return (
     <div className='app'>
       <PageHeader />
+
+      {/* <a href='/'>Home</a> */}
     </div>
   )
 }
