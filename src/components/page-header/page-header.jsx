@@ -1,18 +1,25 @@
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
+
+import { text } from 'styles/mixins'
+import { Logo } from 'components/logo/logo'
 
 export const PageHeader = () => {
-  return (
-    <Header>
-      <Logo href='/'>With styled-components</Logo>
-    </Header>
-  )
+	return (
+		<StyledHeader>
+			<Logo />
+		</StyledHeader>
+	)
 }
 
-const Header = styled.header`
-  display: flex;
-  justify-content: space-around;
+export const StyledHeader = styled.header`
+	display: flex;
+	justify-content: center;
+	padding: var(--padding-xl);
+	background-color: var(--color-white-1);
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1));
 `
 
-const Logo = styled.a`
-  color: green;
+export const StyledLogo = styled.a`
+	font-weight: 700;
+	${text({ size: 'md' })}
 `

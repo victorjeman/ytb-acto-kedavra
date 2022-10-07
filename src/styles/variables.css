@@ -1,0 +1,30 @@
+:root {
+	--font-size-xs: 0.75rem;
+	--font-size-sm: 0.875rem;
+	--font-size-base: 1rem;
+	--font-size-lg: 1.125rem;
+	--font-size-xl: 1.25rem;
+	--font-size-2xl: 1.5rem;
+	--font-size-3xl: 1.875rem;
+
+	--line-height-xs: 1rem;
+	--line-height-sm: 1.25rem;
+	--line-height-base: 1.5rem;
+	--line-height-lg: 1.75rem;
+	--line-height-xl: 1.75rem;
+	--line-height-2xl: 2rem;
+	--line-height-3xl: 2.25rem;
+
+	--color-white-1: #fff;
+	--color-white-2: #f7f7fc;
+	--color-black-1: #14142b;
+	--color-gray-1: #d9dbe9;
+
+	--padding-xs: 0.75rem;
+	--padding-sm: 0.875rem;
+	--padding-base: 1rem;
+	--padding-lg: 1.125rem;
+	--padding-xl: 1.25rem;
+	--padding-2xl: 1.5rem;
+	--padding-3xl: 1.875rem;
+}
