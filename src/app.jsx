@@ -3,10 +3,10 @@ import { PageFooter } from 'components/page-footer/page-footer'
 
 function App() {
 	return (
-		<div className='app'>
+		<main className='app'>
 			<PageHeader />
 			<PageFooter />
-		</div>
+		</main>
 	)
 }
 
