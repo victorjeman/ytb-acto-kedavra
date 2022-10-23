@@ -42,24 +42,58 @@
 	--color-black-1: #14142b;
 
 	--color-gray-1: #d9dbe9;
-	--color-gray-2: #eff0f7;
+	--color-gray-2: #e2e3ed;
 	--color-gray-3: #6e7191;
 
 	--color-focus: #fd0;
 
-	--c-primary-h: 263;
-	--c-primary-s: 94%;
-	--c-primary-l: 50%;
+	--color-primary: #5c0cde;
+	--color-primary-dark: #460ea1;
 
-	--c-help-h: 262;
-	--c-help-s: 100%;
-	--c-help-l: 95%;
+	--color-help: #eee5fe;
+	--color-help-dark: #b296e2;
 
-	--color-primary: hsl(var(--c-primary-h), var(--c-primary-s), var(--c-primary-l));
-	--color-primary-dark: hsl(var(--c-primary-h), var(--c-primary-s), calc(var(--c-primary-l) - 15%));
+	/* BUTTONS */
 
-	--color-help: hsl(var(--c-help-h), var(--c-help-s), var(--c-help-l));
-	--color-help-dark: hsl(var(--c-help-h), var(--c-help-s), calc(var(--c-help-l) - 15%));
+	/* primary */
+	--btn-bg-color-primary: var(--color-primary);
+	--btn-bg-color-hover-primary: var(--color-primary-dark);
+
+	--btn-color-primary: var(--color-white-1);
+	--btn-color-hover-primary: var(--color-white-1);
+
+	--btn-border-color: var(--color-primary);
+	--btn-border-color-hover: var(--color-primary);
+
+	/* secondary */
+	--btn-bg-color-secondary: var(--color-white-2);
+	--btn-bg-color-hover-secondary: var(--color-gray-2);
+
+	--btn-color-secondary: var(--color-black-1);
+	--btn-color-hover-secondary: var(--color-black-1);
+
+	--btn-border-color-secondary: var(--color-primary);
+	--btn-border-color-hover-secondary: var(--color-primary);
+
+	/* help */
+	--btn-bg-color-help: var(--color-help);
+	--btn-bg-color-hover-help: var(--color-help-dark);
+
+	--btn-color-help: var(--color-black-1);
+	--btn-color-hover-help: var(--color-black-1);
+
+	--btn-border-color-help: var(--color-primary);
+	--btn-border-color-hover-help: var(--color-primary);
+
+	/* circle */
+	--btn-bg-color-circle: var(--color-white-1);
+	--btn-bg-color-hover-circle: var(--color-gray-2);
+
+	--btn-color-circle: var(--color-gray-3);
+	--btn-color-hover-circle: var(--color-gray-3);
+
+	--btn-border-color-circle: var(--color-white-1);
+	--btn-border-color-hover-circle: var(--color-gray-2);
 
 	/* EXTRA */
 	--footer-height: 5rem;

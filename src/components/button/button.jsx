@@ -6,7 +6,7 @@ export const Button = ({
 	type = BUTTON_TYPE.PRIMARY,
 	size = SIZE.BASE,
 	iconPosition = ICON_POSITION.LEFT,
-	fullWidth = false,
+	isFullWidth = false,
 	icon,
 	onClick,
 	children,
@@ -14,17 +14,21 @@ export const Button = ({
 }) => {
 	const showIconLeft = icon && iconPosition === ICON_POSITION.LEFT
 	const showIconRight = icon && iconPosition === ICON_POSITION.RIGHT
+	const isCircle = type === BUTTON_TYPE.CIRCLE
 
 	return (
 		<StyledButton
 			$size={size}
 			$type={type}
-			$iconPosition={iconPosition}
+			$isCircle={isCircle}
+			$showIconLeft={showIconLeft}
+			$showIconRight={showIconRight}
+			$isFullWidth={isFullWidth}
 			onClick={onClick}
 			{...rest}>
 			{showIconLeft && icon}
 
-			{children && <StyledText>{children}</StyledText>}
+			{children && children}
 
 			{showIconRight && icon}
 		</StyledButton>
@@ -33,77 +37,10 @@ export const Button = ({
 
 const StyledButton = styled.button`
 	cursor: pointer;
-	display: flex;
+	display: inline-flex;
+	justify-content: center;
 	align-items: center;
 	line-height: 1.1;
-
-	${({ $size }) => css`
-		font-size: var(--font-size-${$size});
-	`}
-
-	${({ $size, $type }) =>
-		$type !== BUTTON_TYPE.CIRCLE &&
-		css`
-			border-radius: var(--border-radius-${$size});
-			padding-right: var(--padding-${$size});
-			padding-left: var(--padding-${$size});
-			padding-top: calc(var(--padding-${$size}) / 2);
-			padding-bottom: calc(var(--padding-${$size}) / 2);
-		`}
-	
-
-	${({ $type }) =>
-		$type === BUTTON_TYPE.PRIMARY &&
-		css`
-			background-color: var(--color-primary);
-			color: var(--color-white-1);
-
-			&:hover:not([disabled]) {
-				background-color: var(--color-primary-dark);
-			}
-		`};
-
-	${({ $type }) =>
-		$type === BUTTON_TYPE.SECONDARY &&
-		css`
-			background-color: var(--color-white-2);
-			color: var(--color-black-1);
-			border: 2px solid var(--color-primary);
-
-			&:hover:not([disabled]) {
-				color: var(--color-primary);
-				background-color: var(--color-gray-2);
-			}
-		`};
-
-	${({ $type }) =>
-		$type === BUTTON_TYPE.HELP &&
-		css`
-			background-color: var(--color-help);
-			color: var(--color-black-1);
-			border: 2px solid var(--color-primary);
-
-			&:hover:not([disabled]) {
-				background-color: var(--color-help-dark);
-			}
-		`};
-
-	${({ $type, $size }) =>
-		$type === BUTTON_TYPE.CIRCLE &&
-		css`
-			width: calc(2 * var(--font-size-${$size}));
-			height: calc(2 * var(--font-size-${$size}));
-			color: var(--color-gray-3);
-			background-color: var(--color-white-1);
-			border-radius: 50%;
-			padding: 0;
-			justify-content: center;
-			box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-
-			&:hover:not([disabled]) {
-				background-color: var(--color-gray-2);
-			}
-		`};
 
 	&:disabled {
 		opacity: 0.3;
@@ -114,29 +51,45 @@ const StyledButton = styled.button`
 		border-color: var(--color-focus);
 		color: var(--color-black-1);
 		background-color: var(--color-focus);
-		box-shadow: 0 2px 0 var(--color-black-1);
+		box-shadow: 1px 2px 0 var(--color-black-1);
 	}
+
+	${({ $isCircle, $size }) =>
+		!$isCircle &&
+		css`
+			padding: calc(var(--padding-${$size}) / 2) var(--padding-${$size})
+				calc(var(--padding-${$size}) / 2) var(--padding-${$size});
+		`};
+
+	${({ $size, $type }) => css`
+		border-radius: var(--border-radius-${$size});
+		font-size: var(--font-size-${$size});
+
+		background-color: var(--btn-bg-color-${$type});
+		border: 2px solid var(--btn-border-color-${$type});
+		color: var(--btn-color-${$type});
+
+		&:hover:not([disabled]) {
+			background-color: var(--btn-bg-color-hover-${$type});
+			border-color: var(--btn-border-color-hover-${$type});
+			color: var(--btn-color-hover-${$type});
+		}
+	`};
+
+	${({ $isFullWidth }) => $isFullWidth && 'width: 100%'};
 
 	svg {
-		display: inline-block;
-
-		${({ $iconPosition, $type }) =>
-			$iconPosition === ICON_POSITION.LEFT &&
-			$type !== BUTTON_TYPE.CIRCLE &&
-			css`
-				margin-right: 0.3rem;
-			`}
-
-		${({ $iconPosition, $type }) =>
-			$iconPosition === ICON_POSITION.RIGHT &&
-			$type !== BUTTON_TYPE.CIRCLE &&
-			css`
-				margin-left: 0.3rem;
-			`}
+		${({ $showIconLeft, $isCircle }) => $showIconLeft && !$isCircle && 'margin-right: 0.3rem'};
+		${({ $showIconRight, $isCircle }) => $showIconRight && !$isCircle && 'margin-left: 0.3rem'};
 	}
-`
 
-const StyledText = styled.span`
-	display: inline-block;
-	vertical-align: middle;
+	${({ $isCircle, $size }) =>
+		$isCircle &&
+		css`
+			padding: 0;
+			border-radius: 50%;
+			box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+			width: calc(2 * var(--font-size-${$size}));
+			height: calc(2 * var(--font-size-${$size}));
+		`};
 `

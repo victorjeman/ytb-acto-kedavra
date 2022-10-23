@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { MdOutlineModeEdit } from 'react-icons/md'
 import { GrClose } from 'react-icons/gr'
 
@@ -7,6 +7,7 @@ import { BUTTON_TYPE, ICON_POSITION, SIZE } from 'components/constants/constants
 import { PageHeader } from 'components/page-header/page-header'
 import { PageFooter } from 'components/page-footer/page-footer'
 import { Button } from 'components/button/button'
+// import { Button } from 'components-demo/button/button'
 
 function App() {
 	const sayHello = () => {
@@ -89,6 +90,18 @@ function App() {
 						iconPosition={ICON_POSITION.RIGHT}
 						onClick={sayHello}>
 						with icon
+					</Button>
+				</StyledDiv>
+
+				<StyledDiv>
+					<Button type={BUTTON_TYPE.HELP} size={SIZE.XL2} isFullWidth={true} onClick={sayHello}>
+						full width xl2 help
+					</Button>
+				</StyledDiv>
+
+				<StyledDiv>
+					<Button type={BUTTON_TYPE.SECONDARY} size={SIZE.XL} isFullWidth={true} onClick={sayHello}>
+						full width xl secondary
 					</Button>
 				</StyledDiv>
 
