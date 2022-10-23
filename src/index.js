@@ -7,8 +7,6 @@ import './styles/variables.css'
 
 import './assets/fonts/icomoon.ttf'
 
-import './styles/icons.css'
-
 import App from './app'
 import reportWebVitals from './reportWebVitals'
 
