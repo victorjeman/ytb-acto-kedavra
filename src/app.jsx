@@ -2,12 +2,11 @@ import styled from 'styled-components/macro'
 import { MdOutlineModeEdit } from 'react-icons/md'
 import { GrClose } from 'react-icons/gr'
 
-import { BUTTON_TYPE, ICON_POSITION, SIZE } from 'components/constants/constants'
+import { BUTTON_TYPE, ICON_POSITION, SIZE } from 'constants/constants'
 
 import { PageHeader } from 'components/page-header/page-header'
 import { PageFooter } from 'components/page-footer/page-footer'
 import { Button } from 'components/button/button'
-// import { Button } from 'components-demo/button/button'
 
 function App() {
 	const sayHello = () => {

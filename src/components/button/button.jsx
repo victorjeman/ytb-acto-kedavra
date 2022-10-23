@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components/macro'
 
-import { BUTTON_TYPE, ICON_POSITION, SIZE } from 'components/constants/constants'
+import { BUTTON_TYPE, ICON_POSITION, SIZE } from 'constants/constants'
 
 export const Button = ({
 	type = BUTTON_TYPE.PRIMARY,
@@ -89,7 +89,7 @@ const StyledButton = styled.button`
 			padding: 0;
 			border-radius: 50%;
 			box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
-			width: calc(2 * var(--font-size-${$size}));
-			height: calc(2 * var(--font-size-${$size}));
+			width: calc(1.5 * var(--font-size-${$size}));
+			height: calc(1.5 * var(--font-size-${$size}));
 		`};
 `
