@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 import { text } from 'styles/mixins'
 import { Logo } from 'components/logo/logo'
