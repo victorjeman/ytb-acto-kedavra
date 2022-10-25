@@ -7,6 +7,8 @@ import { BUTTON_TYPE, ICON_POSITION, SIZE } from 'constants/constants'
 import { PageHeader } from 'components/page-header/page-header'
 import { PageFooter } from 'components/page-footer/page-footer'
 import { Button } from 'components/button/button'
+import { ReadMore } from 'components/read-more/read-more'
+import { ActorReadMore } from 'components/actor-read-more/actor-read-more'
 
 function App() {
 	const sayHello = () => {
@@ -18,7 +20,7 @@ function App() {
 			<PageHeader />
 			<StyledH1>My components</StyledH1>
 
-			<StyledSection style={{ padding: '1rem' }}>
+			<StyledSection>
 				<StyledH2>My Buttons</StyledH2>
 
 				<StyledDiv>
@@ -146,6 +148,19 @@ function App() {
 						type={BUTTON_TYPE.CIRCLE}
 						icon={<GrClose />}
 						size={SIZE.XL3}></Button>
+				</StyledDiv>
+			</StyledSection>
+
+			<StyledSection>
+				<StyledH2>Read more</StyledH2>
+				<StyledDiv>
+					<ReadMore
+						text='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque eveniet ex ipsam repudiandae debitis doloribus sequi deserunt quos consequuntur? Commodi non aliquam voluptatum. Cumque est aliquam maiores, consectetur quos ea.'
+						limit={150}
+					/>
+				</StyledDiv>
+				<StyledDiv>
+					<ActorReadMore text='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque eveniet ex ipsam repudiandae debitis doloribus sequi deserunt quos consequuntur? Commodi non aliquam voluptatum. Cumque est aliquam maiores, consectetur quos ea.' />
 				</StyledDiv>
 			</StyledSection>
 
