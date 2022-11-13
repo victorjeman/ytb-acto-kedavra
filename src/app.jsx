@@ -2,13 +2,16 @@ import styled from 'styled-components/macro'
 import { MdOutlineModeEdit } from 'react-icons/md'
 import { GrClose } from 'react-icons/gr'
 
-import { BUTTON_TYPE, ICON_POSITION, SIZE } from 'constants/constants'
+import { BUTTON_TYPE, BADGE_TYPE, ICON_POSITION } from 'constants/general.constants'
+import { SIZE } from 'constants/size.constants'
 
 import { PageHeader } from 'components/page-header/page-header'
 import { PageFooter } from 'components/page-footer/page-footer'
 import { Button } from 'components/button/button'
 import { ReadMore } from 'components/read-more/read-more'
 import { ActorReadMore } from 'components/actor-read-more/actor-read-more'
+import { Badge } from 'components/badge/badge'
+import { Badges } from 'components/badges/badges'
 
 function App() {
 	const sayHello = () => {
@@ -164,6 +167,38 @@ function App() {
 				</StyledDiv>
 			</StyledSection>
 
+			<StyledSection>
+				<StyledH2>Single Badges</StyledH2>
+				<StyledDiv>
+					<Badge>default</Badge>
+					<Badge type={BADGE_TYPE.PRIMARY}>primary base</Badge>
+					<Badge type={BADGE_TYPE.SECONDARY} size={SIZE.LG}>
+						secondary size lg
+					</Badge>
+					<Badge type={BADGE_TYPE.PRIMARY} size={SIZE.XL2}>
+						primary size xl2
+					</Badge>
+				</StyledDiv>
+			</StyledSection>
+
+			<StyledSection>
+				<StyledH2>List of Badges</StyledH2>
+				<StyledDiv>
+					<Badges
+						badges={[
+							{ type: BADGE_TYPE.PRIMARY, text: 'Actor', size: SIZE.XS },
+							{ type: BADGE_TYPE.PRIMARY, text: 'Writer', size: SIZE.XS },
+							{ type: BADGE_TYPE.PRIMARY, text: 'Director', size: SIZE.BASE },
+							{ type: BADGE_TYPE.PRIMARY, text: 'Something else', size: SIZE.BASE },
+							{ type: BADGE_TYPE.SECONDARY, text: 'Manager', size: SIZE.XL },
+							{ type: BADGE_TYPE.SECONDARY, text: 'Programmer', size: SIZE.XL },
+							{ type: BADGE_TYPE.SECONDARY, text: 'Dancer', size: SIZE.XL2 },
+							{ type: BADGE_TYPE.SECONDARY, text: 'Guru', size: SIZE.XL2 },
+						]}
+					/>
+				</StyledDiv>
+			</StyledSection>
+
 			<PageFooter />
 		</main>
 	)
@@ -199,6 +234,7 @@ const StyledDiv = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
+	flex-wrap: wrap;
 
 	&:last-of-type {
 		margin-bottom: 0;

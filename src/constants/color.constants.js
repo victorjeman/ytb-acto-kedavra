@@ -1,0 +1,16 @@
+export const COLOR = {
+	WHITE_1: '#fff',
+	WHITE_2: '#f7f7fc',
+	BLACK_1: '#14142b',
+	BLUE_1: '#032596',
+	BLUE_2: '#e5ebfe',
+	GRAY_1: '#d9dbe9',
+	GRAY_2: '#e2e3ed',
+	GRAY_3: '#6e7191',
+	YELLOW: '#f4b740',
+	FOCUS: '#fd0',
+	PRIMARY: '#5c0cde',
+	PRIMARY_DARK: '#460ea1',
+	HELP: '#eee5fe',
+	HELP_DARK: '#b296e2',
+}
