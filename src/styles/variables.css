@@ -1,57 +1,17 @@
 :root {
-	/* FONT SIZE */
-	--font-size-xs: 0.75rem;
-	--font-size-sm: 0.875rem;
-	--font-size-base: 1rem;
-	--font-size-lg: 1.125rem;
-	--font-size-xl: 1.25rem;
-	--font-size-xl2: 1.5rem;
-	--font-size-xl3: 1.875rem;
-
-	/* LINE HEIGHT */
-	--line-height-xs: 1rem;
-	--line-height-sm: 1.25rem;
-	--line-height-base: 1.5rem;
-	--line-height-lg: 1.75rem;
-	--line-height-xl: 1.75rem;
-	--line-height-xl2: 2rem;
-	--line-height-xl3: 2.25rem;
-
-	/* PADDING */
-	--padding-xs: 0.75rem;
-	--padding-sm: 0.875rem;
-	--padding-base: 1rem;
-	--padding-lg: 1.125rem;
-	--padding-xl: 1.25rem;
-	--padding-xl2: 1.5rem;
-	--padding-xl3: 1.875rem;
-
-	/* BORDER RADIUS */
-	--border-radius-xs: 0.8rem;
-	--border-radius-sm: 0.8rem;
-	--border-radius-base: 0.8rem;
-	--border-radius-lg: 1rem;
-	--border-radius-xl: 1.2rem;
-	--border-radius-xl2: 1.4rem;
-	--border-radius-xl3: 1.6rem;
-
 	/* COLORS */
 	--color-white-1: #fff;
 	--color-white-2: #f7f7fc;
-
-	--color-black-1: #14142b;
-
+	--color-black-1BLACK: #14142b;
+	--color-blue-1: #032596;
+	--color-blue-2: #e5ebfe;
 	--color-gray-1: #d9dbe9;
 	--color-gray-2: #e2e3ed;
 	--color-gray-3: #6e7191;
-
 	--color-yellow: #f4b740;
-
 	--color-focus: #fd0;
-
 	--color-primary: #5c0cde;
 	--color-primary-dark: #460ea1;
-
 	--color-help: #eee5fe;
 	--color-help-dark: #b296e2;
 
@@ -96,6 +56,13 @@
 
 	--btn-border-color-circle: var(--color-white-1);
 	--btn-border-color-hover-circle: var(--color-gray-2);
+
+	/* BADGES */
+	--badge-bg-primary: var(--color-blue-2);
+	--badge-color-primary: var(--color-blue-1);
+
+	--badge-bg-secondary: var(--color-help);
+	--badge-color-secondary: var(--color-primary-dark);
 
 	/* EXTRA */
 	--footer-height: 5rem;

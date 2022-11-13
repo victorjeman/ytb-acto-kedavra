@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components/macro'
 
-import { BUTTON_TYPE, ICON_POSITION, SIZE } from 'constants/constants'
+import { BUTTON_TYPE, ICON_POSITION } from 'constants/general.constants'
+import { SIZE } from 'constants/size.constants'
 
 export const Button = ({
 	type = BUTTON_TYPE.PRIMARY,
