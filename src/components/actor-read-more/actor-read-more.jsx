@@ -11,7 +11,7 @@ export const ActorReadMore = ({ text, limit }) => {
 	)
 }
 
-const StyledActorReadMore = styled.div`
+export const StyledActorReadMore = styled.div`
 	${StyledText} {
 		color: var(--color-gray-3);
 	}

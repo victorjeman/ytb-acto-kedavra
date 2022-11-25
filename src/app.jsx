@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styled from 'styled-components/macro'
 import { MdOutlineModeEdit } from 'react-icons/md'
 import { GrClose } from 'react-icons/gr'
@@ -12,10 +13,28 @@ import { ReadMore } from 'components/read-more/read-more'
 import { ActorReadMore } from 'components/actor-read-more/actor-read-more'
 import { Badge } from 'components/badge/badge'
 import { Badges } from 'components/badges/badges'
+import { ActorThumbnail } from 'components/actor-thumbnail/actor-thumbnail'
+
+const ACTOR = {
+	score: 80,
+	image: '/images/actors/leonardo.jpg',
+	firstName: 'Leonardo',
+	lastName: 'Dicaprio',
+	job: 'Actor & Writer',
+	hobbies: ['Traveling', 'Reading', 'Puzzles'],
+	description:
+		"Leonardo is an American actor and film producer. Known for his work as a leading man in biopics and period films, he is the recipient of numerous accolades, including an Academy Award, a British Academy Film Award, and three Golden Globe Awards. As of 2019, his films have grossed over $7.2 billion worldwide, and he has been placed eight times in annual rankings of the world's highest-paid actors.",
+}
+
+const ACTORS = [
+	ACTOR,
+	{ ...ACTOR, hobbies: ['Traveling', 'Reading', 'Puzzles', 'Traveling', 'Something else'] },
+]
 
 function App() {
+	const [message, setMessage] = useState('hello')
 	const sayHello = () => {
-		console.log('Hello!')
+		console.log(message)
 	}
 
 	return (
@@ -186,17 +205,29 @@ function App() {
 				<StyledDiv>
 					<Badges
 						badges={[
-							{ type: BADGE_TYPE.PRIMARY, text: 'Actor', size: SIZE.XS },
-							{ type: BADGE_TYPE.PRIMARY, text: 'Writer', size: SIZE.XS },
-							{ type: BADGE_TYPE.PRIMARY, text: 'Director', size: SIZE.BASE },
-							{ type: BADGE_TYPE.PRIMARY, text: 'Something else', size: SIZE.BASE },
-							{ type: BADGE_TYPE.SECONDARY, text: 'Manager', size: SIZE.XL },
-							{ type: BADGE_TYPE.SECONDARY, text: 'Programmer', size: SIZE.XL },
-							{ type: BADGE_TYPE.SECONDARY, text: 'Dancer', size: SIZE.XL2 },
-							{ type: BADGE_TYPE.SECONDARY, text: 'Guru', size: SIZE.XL2 },
+							{ type: BADGE_TYPE.PRIMARY, text: 'Actor', size: SIZE.XS, key: 1 },
+							{ type: BADGE_TYPE.PRIMARY, text: 'Writer', size: SIZE.XS, key: 2 },
+							{ type: BADGE_TYPE.PRIMARY, text: 'Director', size: SIZE.BASE, key: 3 },
+							{ type: BADGE_TYPE.PRIMARY, text: 'Something else', size: SIZE.BASE, key: 4 },
+							{ type: BADGE_TYPE.SECONDARY, text: 'Manager', size: SIZE.XL, key: 5 },
+							{ type: BADGE_TYPE.SECONDARY, text: 'Programmer', size: SIZE.XL, key: 6 },
+							{ type: BADGE_TYPE.SECONDARY, text: 'Dancer', size: SIZE.XL2, key: 7 },
+							{ type: BADGE_TYPE.SECONDARY, text: 'Guru', size: SIZE.XL2, key: 8 },
 						]}
 					/>
 				</StyledDiv>
+			</StyledSection>
+
+			<StyledSection>
+				<StyledH2>Actor Thumbnail</StyledH2>
+
+				<p style={{ marginBottom: '1rem' }}> I'm a random id from app.js {message}</p>
+
+				<StyledDiv2>
+					<ActorThumbnail setMessage={setMessage} actor={ACTORS[0]} />
+
+					<ActorThumbnail setMessage={setMessage} actor={ACTORS[1]} />
+				</StyledDiv2>
 			</StyledSection>
 
 			<PageFooter />
@@ -217,10 +248,6 @@ const StyledSection = styled.section`
 	margin-left: auto;
 	border: 2px solid #a0a3bd;
 	margin-top: 1rem;
-
-	button {
-		margin-right: 1rem;
-	}
 `
 
 const StyledH2 = styled.h2`
@@ -238,6 +265,16 @@ const StyledDiv = styled.div`
 
 	&:last-of-type {
 		margin-bottom: 0;
+	}
+`
+
+const StyledDiv2 = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+
+	> * {
+		width: 48%;
 	}
 `
 

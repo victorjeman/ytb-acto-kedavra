@@ -6,7 +6,7 @@ export const Badges = ({ badges }) => {
 	return (
 		<StyledBadges>
 			{badges.map((badge) => (
-				<StyledBadgesItem>
+				<StyledBadgesItem key={badge.key}>
 					<Badge type={badge.type} size={badge.size}>
 						{badge.text}
 					</Badge>
@@ -16,7 +16,7 @@ export const Badges = ({ badges }) => {
 	)
 }
 
-const StyledBadges = styled.ul`
+export const StyledBadges = styled.ul`
 	margin: 0;
 	padding: 0;
 	list-style: none;
