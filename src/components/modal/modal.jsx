@@ -12,20 +12,20 @@ import { Button } from 'components/button/button'
 const KEYDOWN = 'keydown'
 const MODAL_OPEN_CLASS = 'modal-is-opened'
 
-//! Why the function is outside the component?
+//? Why the function is outside the component?
 const checkIfEscapeIsDown = (event) => event.code === ESCAPE_BTN_CODE
 
-const toggleBodyClass = (show) => {
-	if (show) return document.body.classList.add(MODAL_OPEN_CLASS)
+const toggleBodyClass = (open) => {
+	if (open) return document.body.classList.add(MODAL_OPEN_CLASS)
 
 	document.body.classList.remove(MODAL_OPEN_CLASS)
 }
 
 export const Modal = ({ title, children, onClose, isOpen = false }) => {
-	const [showModal, setShowModal] = useState(false)
+	const [openModal, setOpenModal] = useState(false)
 
 	const closeModal = () => {
-		setShowModal(false)
+		setOpenModal(false)
 		toggleBodyClass(false)
 
 		onClose()
@@ -38,18 +38,18 @@ export const Modal = ({ title, children, onClose, isOpen = false }) => {
 
 		return () => window.removeEventListener(KEYDOWN, closeModalWithEscape)
 
-		//! Why this comment?
+		//? Why this comment?
 		//eslint-disable-next-line
 	}, [])
 
 	useEffect(() => {
-		setShowModal(isOpen)
+		setOpenModal(isOpen)
 		toggleBodyClass(isOpen)
 	}, [isOpen])
 
 	return ReactDom.createPortal(
 		<AnimatePresence>
-			{showModal && (
+			{openModal && (
 				<>
 					<GlobalBodyStyle />
 
