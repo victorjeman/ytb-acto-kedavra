@@ -21,17 +21,19 @@ const toggleBodyClass = (open) => {
 	document.body.classList.remove(MODAL_OPEN_CLASS)
 }
 
-export const Modal = ({ title, children, onClose, isOpen = false }) => {
+export const Modal = ({ title, children, onClose, isOpen = false, overlay = true }) => {
 	const [openModal, setOpenModal] = useState(false)
 
 	const closeModal = () => {
 		setOpenModal(false)
 		toggleBodyClass(false)
 
-		onClose()
+		if (onClose) onClose()
 	}
 
-	const closeModalWithEscape = (event) => checkIfEscapeIsDown(event) && closeModal()
+	const closeModalWithEscape = (event) => {
+		if (checkIfEscapeIsDown(event)) closeModal()
+	}
 
 	useEffect(() => {
 		window.addEventListener(KEYDOWN, closeModalWithEscape)
@@ -53,7 +55,7 @@ export const Modal = ({ title, children, onClose, isOpen = false }) => {
 				<>
 					<GlobalBodyStyle />
 
-					<StyledOverlay onClick={closeModal} />
+					{overlay && <StyledOverlay onClick={closeModal} />}
 
 					<StyledModal
 						as={motion.div}
