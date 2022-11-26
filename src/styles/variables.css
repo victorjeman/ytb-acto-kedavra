@@ -32,8 +32,8 @@
 	--btn-bg-color-secondary: var(--color-white-2);
 	--btn-bg-color-hover-secondary: var(--color-gray-2);
 
-	--btn-color-secondary: var(--color-black-1);
-	--btn-color-hover-secondary: var(--color-black-1);
+	--btn-color-secondary: var(--color-primary);
+	--btn-color-hover-secondary: var(--color-primary);
 
 	--btn-border-color-secondary: var(--color-primary);
 	--btn-border-color-hover-secondary: var(--color-primary);

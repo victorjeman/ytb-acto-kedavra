@@ -15,6 +15,7 @@ import { Badge } from 'components/badge/badge'
 import { Badges } from 'components/badges/badges'
 import { ActorThumbnail } from 'components/actor-thumbnail/actor-thumbnail'
 import { Modal } from 'components/modal/modal'
+import { SelectAllActors } from 'components/select-all-actors/select-all-actors'
 
 const ACTOR = {
 	score: 80,
@@ -256,6 +257,14 @@ function App() {
 							<Badge>Badge</Badge>
 						</>
 					</Modal>
+				</StyledDiv2>
+			</StyledSection>
+
+			<StyledSection>
+				<StyledH2>Select all actors</StyledH2>
+
+				<StyledDiv2>
+					<SelectAllActors selectedActors={0} />
 				</StyledDiv2>
 			</StyledSection>
 
