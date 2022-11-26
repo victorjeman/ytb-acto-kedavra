@@ -17,3 +17,5 @@ export const ICON_POSITION = {
 }
 
 export const READ_MORE_LIMIT = 60
+
+export const ESCAPE_BTN_CODE = 'Escape'

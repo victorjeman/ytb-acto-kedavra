@@ -14,6 +14,7 @@ import { ActorReadMore } from 'components/actor-read-more/actor-read-more'
 import { Badge } from 'components/badge/badge'
 import { Badges } from 'components/badges/badges'
 import { ActorThumbnail } from 'components/actor-thumbnail/actor-thumbnail'
+import { Modal } from 'components/modal/modal'
 
 const ACTOR = {
 	score: 80,
@@ -33,6 +34,8 @@ const ACTORS = [
 
 function App() {
 	const [message, setMessage] = useState('hello')
+	const [showMeSomething, setShowMeSomething] = useState(false)
+
 	const sayHello = () => {
 		console.log(message)
 	}
@@ -227,6 +230,32 @@ function App() {
 					<ActorThumbnail setMessage={setMessage} actor={ACTORS[0]} />
 
 					<ActorThumbnail setMessage={setMessage} actor={ACTORS[1]} />
+				</StyledDiv2>
+			</StyledSection>
+
+			<StyledSection>
+				<StyledH2>Modal</StyledH2>
+
+				<StyledDiv2>
+					<Button onClick={() => setShowMeSomething(true)}>Show Modal</Button>
+
+					<Modal
+						isOpen={showMeSomething}
+						title='My fancy modal'
+						onClose={() => setShowMeSomething(false)}>
+						<>
+							<p>
+								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam nobis aut
+								praesentium doloribus accusamus dignissimos ducimus laudantium ratione dolorem sint!
+							</p>
+
+							<Button>Button</Button>
+
+							<p>Dolorum id sit velit porro natus suscipit illo iure magnam.</p>
+
+							<Badge>Badge</Badge>
+						</>
+					</Modal>
 				</StyledDiv2>
 			</StyledSection>
 
