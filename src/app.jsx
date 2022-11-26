@@ -16,6 +16,7 @@ import { Badges } from 'components/badges/badges'
 import { ActorThumbnail } from 'components/actor-thumbnail/actor-thumbnail'
 import { Modal } from 'components/modal/modal'
 import { SelectAllActors } from 'components/select-all-actors/select-all-actors'
+import { CallToAction } from 'components/call-to-action/call-to-action'
 
 const ACTOR = {
 	score: 80,
@@ -179,12 +180,14 @@ function App() {
 
 			<StyledSection>
 				<StyledH2>Read more</StyledH2>
+
 				<StyledDiv>
 					<ReadMore
 						text='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque eveniet ex ipsam repudiandae debitis doloribus sequi deserunt quos consequuntur? Commodi non aliquam voluptatum. Cumque est aliquam maiores, consectetur quos ea.'
 						limit={150}
 					/>
 				</StyledDiv>
+
 				<StyledDiv>
 					<ActorReadMore text='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque eveniet ex ipsam repudiandae debitis doloribus sequi deserunt quos consequuntur? Commodi non aliquam voluptatum. Cumque est aliquam maiores, consectetur quos ea.' />
 				</StyledDiv>
@@ -228,9 +231,13 @@ function App() {
 				<p style={{ marginBottom: '1rem' }}> I'm a random id from app.js {message}</p>
 
 				<StyledDiv2>
-					<ActorThumbnail setMessage={setMessage} actor={ACTORS[0]} />
+					<div className='column'>
+						<ActorThumbnail setMessage={setMessage} actor={ACTORS[0]} />
+					</div>
 
-					<ActorThumbnail setMessage={setMessage} actor={ACTORS[1]} />
+					<div className='column'>
+						<ActorThumbnail setMessage={setMessage} actor={ACTORS[1]} />
+					</div>
 				</StyledDiv2>
 			</StyledSection>
 
@@ -265,6 +272,14 @@ function App() {
 
 				<StyledDiv2>
 					<SelectAllActors selectedActors={0} />
+				</StyledDiv2>
+			</StyledSection>
+
+			<StyledSection>
+				<StyledH2>Call to action</StyledH2>
+
+				<StyledDiv2>
+					<CallToAction />
 				</StyledDiv2>
 			</StyledSection>
 
@@ -311,7 +326,7 @@ const StyledDiv2 = styled.div`
 	justify-content: space-between;
 	align-items: flex-start;
 
-	> * {
+	> .column {
 		width: 48%;
 	}
 `
