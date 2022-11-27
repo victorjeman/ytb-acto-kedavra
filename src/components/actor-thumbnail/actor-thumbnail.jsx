@@ -14,11 +14,11 @@ import { Button } from 'components/button/button'
 
 //? What is a pure function?
 function generateBadgesFromHobbies(hobbies) {
-	console.count('you called me sir?')
+	// console.count('called me?')
 
 	return hobbies.map((hobby) => ({
 		type: BADGE_TYPE.PRIMARY,
-		size: SIZE.XS,
+		size: SIZE.SM,
 		text: hobby,
 		key: nanoid(), //? What is nanoid? DON'T generate dynamic keys inside JSX. Why?
 	}))
@@ -36,6 +36,7 @@ export const ActorThumbnail = ({ actor, setMessage }) => {
 	useEffect(() => {
 		setBadges(generateBadgesFromHobbies(hobbies))
 	}, [hobbies])
+
 	return (
 		<StyledActorThumbnail>
 			<StyledImage src={image} alt={`${firstName} ${lastName}`} />

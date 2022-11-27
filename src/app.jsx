@@ -224,9 +224,13 @@ function App() {
 				<p style={{ marginBottom: '1rem' }}> I'm a random id from app.js {message}</p>
 
 				<StyledDiv2>
-					<ActorThumbnail setMessage={setMessage} actor={ACTORS[0]} />
+					<div className='column'>
+						<ActorThumbnail setMessage={setMessage} actor={ACTORS[0]} />
+					</div>
 
-					<ActorThumbnail setMessage={setMessage} actor={ACTORS[1]} />
+					<div className='column'>
+						{/* <ActorThumbnail setMessage={setMessage} actor={ACTORS[1]} /> */}
+					</div>
 				</StyledDiv2>
 			</StyledSection>
 
@@ -273,7 +277,7 @@ const StyledDiv2 = styled.div`
 	justify-content: space-between;
 	align-items: flex-start;
 
-	> * {
+	.column {
 		width: 48%;
 	}
 `

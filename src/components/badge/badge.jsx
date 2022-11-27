@@ -20,6 +20,7 @@ export const StyledBadge = styled.span`
 
 	padding: ${({ $size }) => `calc(var(--padding-${$size}) / 2) var(--padding-${$size})`};
 	border-radius: ${({ $size }) => `var(--border-radius-${$size})`};
+	font-size: ${({ $size }) => `var(--font-size-${$size})`};
 
 	display: inline-block;
 	line-height: 1.1;
