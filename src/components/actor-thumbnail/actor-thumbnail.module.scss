@@ -1,0 +1,55 @@
+.thumbnail {
+	border-radius: var(--border-radius-base);
+	background-color: var(--color-white-1);
+	position: relative;
+}
+
+.content {
+	padding: 0 1rem 1rem 1rem;
+}
+
+.image {
+	border-top-left-radius: var(--border-radius-base);
+	border-top-right-radius: var(--border-radius-base);
+	height: 220px;
+	width: 100%;
+	object-fit: cover;
+	margin-bottom: 0.5rem;
+}
+
+.name {
+	font-size: var(--font-size-lg);
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+}
+
+.info {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 0.8rem;
+}
+
+.job {
+	color: var(--color-gray-4);
+	font-size: var(--font-size-base);
+	line-height: 1;
+}
+
+.score {
+	color: var(--color-yellow);
+	font-weight: 500;
+}
+
+.actorBadges {
+	margin-bottom: 0.5rem;
+}
+
+.readMore {
+	margin-bottom: 0.5rem;
+}
+
+.remove {
+	position: absolute;
+	top: -0.5rem;
+	right: -0.5rem;
+}

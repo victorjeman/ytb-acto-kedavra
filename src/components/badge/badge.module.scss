@@ -1,0 +1,13 @@
+.badge {
+	display: inline-block;
+	line-height: 1.1;
+	white-space: nowrap;
+	text-align: center;
+	text-overflow: ellipsis;
+	overflow: hidden;
+
+	color: var(--badge-color);
+	background-color: var(--badge-bg);
+	padding: calc(var(--badge-padding) / 2) calc(var(--badge-padding));
+	border-radius: var(--badge-border-radius);
+}

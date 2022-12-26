@@ -18,6 +18,7 @@ import { Button } from 'components/button/button'
 import { ReadMore } from 'components/read-more/read-more'
 import { ActorReadMore } from 'components/actor-read-more/actor-read-more'
 import { Badge } from 'components/badge/badge'
+import { BadgeV2 } from 'components/badge/badge-v2'
 import { Badges } from 'components/badges/badges'
 import { ActorThumbnail } from 'components/actor-thumbnail/actor-thumbnail'
 import { Modal } from 'components/modal/modal'
@@ -28,6 +29,7 @@ import { useNotification } from 'services/notification-provider/notification-pro
 import { ActorForm } from 'components/actor-form/actor-form'
 import { ActorFormV2 } from 'components/actor-form/actor-form-v2'
 import { ActorFormV3 } from 'components/actor-form/actor-form-v3'
+import { ActorThumbnailV2 } from 'components/actor-thumbnail/actor-thumbnail-v2'
 
 const ACTOR = {
 	score: 80,
@@ -221,15 +223,25 @@ function App() {
 
 			<StyledSection>
 				<StyledH2>Single Badges</StyledH2>
+
 				<StyledDiv>
 					<Badge>default</Badge>
+
 					<Badge type={BADGE_TYPE.PRIMARY}>primary base</Badge>
+
 					<Badge type={BADGE_TYPE.SECONDARY} size={SIZE.LG}>
 						secondary size lg
 					</Badge>
+
 					<Badge type={BADGE_TYPE.PRIMARY} size={SIZE.XL2}>
 						primary size xl2
 					</Badge>
+
+					<BadgeV2>Badge v2</BadgeV2>
+					<BadgeV2 type={BADGE_TYPE.SECONDARY}>Badge v2</BadgeV2>
+					<BadgeV2 type={BADGE_TYPE.SECONDARY} size={SIZE.XL4}>
+						Badge v2
+					</BadgeV2>
 				</StyledDiv>
 			</StyledSection>
 
@@ -257,12 +269,16 @@ function App() {
 				<p style={{ marginBottom: '1rem' }}> I'm a random id from app.js {message}</p>
 
 				<StyledDiv2>
-					<div className='column'>
+					{/* <div className='column'>
 						<ActorThumbnail setMessage={setMessage} actor={ACTORS[0]} />
 					</div>
 
 					<div className='column'>
 						<ActorThumbnail setMessage={setMessage} actor={ACTORS[1]} />
+					</div> */}
+
+					<div className='column'>
+						<ActorThumbnailV2 setMessage={setMessage} actor={ACTORS[1]} />
 					</div>
 				</StyledDiv2>
 			</StyledSection>

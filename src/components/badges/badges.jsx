@@ -2,9 +2,9 @@ import styled from 'styled-components/macro'
 
 import { Badge } from 'components/badge/badge'
 
-export const Badges = ({ badges }) => {
+export const Badges = ({ badges, className }) => {
 	return (
-		<StyledBadges>
+		<StyledBadges className={className}>
 			{badges.map((badge) => (
 				<StyledBadgesItem key={badge.key}>
 					<Badge type={badge.type} size={badge.size}>
