@@ -3,9 +3,9 @@ import styled from 'styled-components/macro'
 import { StyledButton } from 'components/button/button'
 import { ReadMore, StyledText } from 'components/read-more/read-more'
 
-export const ActorReadMore = ({ text, limit }) => {
+export const ActorReadMore = ({ text, limit, className }) => {
 	return (
-		<StyledActorReadMore>
+		<StyledActorReadMore className={className}>
 			<ReadMore text={text} limit={limit} />
 		</StyledActorReadMore>
 	)
