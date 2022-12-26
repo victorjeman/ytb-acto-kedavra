@@ -25,6 +25,9 @@ import { SelectAllActors } from 'components/select-all-actors/select-all-actors'
 import { CallToAction } from 'components/call-to-action/call-to-action'
 import { Notification } from 'components/notification/notification'
 import { useNotification } from 'services/notification-provider/notification-provider'
+import { ActorForm } from 'components/actor-form/actor-form'
+import { ActorFormV2 } from 'components/actor-form/actor-form-v2'
+import { ActorFormV3 } from 'components/actor-form/actor-form-v3'
 
 const ACTOR = {
 	score: 80,
@@ -45,6 +48,8 @@ const ACTORS = [
 function App() {
 	const [message, setMessage] = useState('hello')
 	const [showMeSomething, setShowMeSomething] = useState(false)
+	const [actors, setActors] = useState([])
+
 	const dispatch = useNotification()
 
 	const sayHello = () => {
@@ -57,6 +62,10 @@ function App() {
 			type: NOTIFICATION_TYPE.SUCCESS,
 			message: 'Un mesaj frumos',
 		})
+	}
+
+	const addActor = (actor) => {
+		setActors([...actors, actor])
 	}
 
 	return (
@@ -312,9 +321,23 @@ function App() {
 				<StyledH2>Multiple Notification</StyledH2>
 
 				<StyledDiv3>
-					{/* <Notifications notifications={NOTIFICATIONS} /> */}
-
 					<Button onClick={addNotification}>Add new notification</Button>
+				</StyledDiv3>
+			</StyledSection>
+
+			<StyledSection>
+				<StyledH2>Actor form</StyledH2>
+
+				<StyledDiv3>
+					{actors.map((actor, index) => (
+						<ActorThumbnail actor={actor} key={index} />
+					))}
+
+					{/* <ActorForm onSubmit={addActor} /> */}
+
+					{/* <ActorFormV2 onSubmit={addActor} /> */}
+
+					<ActorFormV3 onSubmit={addActor} />
 				</StyledDiv3>
 			</StyledSection>
 
