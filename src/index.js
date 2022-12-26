@@ -11,13 +11,17 @@ import { GlobalCSSElements } from 'styles/global-css-elements'
 
 import reportWebVitals from './reportWebVitals'
 
+import NotificationProvider from 'services/notification-provider/notification-provider'
+
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
 	<React.StrictMode>
 		<GlobalCSSSizeVariables />
 		<GlobalCSSElements />
-		<App />
+		<NotificationProvider>
+			<App />
+		</NotificationProvider>
 	</React.StrictMode>,
 )
 

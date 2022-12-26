@@ -3,7 +3,13 @@ import styled from 'styled-components/macro'
 import { MdOutlineModeEdit } from 'react-icons/md'
 import { GrClose } from 'react-icons/gr'
 
-import { BUTTON_TYPE, BADGE_TYPE, ICON_POSITION } from 'constants/general.constants'
+import {
+	BUTTON_TYPE,
+	BADGE_TYPE,
+	ICON_POSITION,
+	NOTIFICATION_TYPE,
+	NOTIFICATION_ACTION_TYPE,
+} from 'constants/general.constants'
 import { SIZE } from 'constants/size.constants'
 
 import { PageHeader } from 'components/page-header/page-header'
@@ -17,6 +23,8 @@ import { ActorThumbnail } from 'components/actor-thumbnail/actor-thumbnail'
 import { Modal } from 'components/modal/modal'
 import { SelectAllActors } from 'components/select-all-actors/select-all-actors'
 import { CallToAction } from 'components/call-to-action/call-to-action'
+import { Notification } from 'components/notification/notification'
+import { useNotification } from 'services/notification-provider/notification-provider'
 
 const ACTOR = {
 	score: 80,
@@ -37,9 +45,18 @@ const ACTORS = [
 function App() {
 	const [message, setMessage] = useState('hello')
 	const [showMeSomething, setShowMeSomething] = useState(false)
+	const dispatch = useNotification()
 
 	const sayHello = () => {
 		console.log(message)
+	}
+
+	const addNotification = () => {
+		dispatch({
+			actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
+			type: NOTIFICATION_TYPE.SUCCESS,
+			message: 'Un mesaj frumos',
+		})
 	}
 
 	return (
@@ -283,6 +300,24 @@ function App() {
 				</StyledDiv2>
 			</StyledSection>
 
+			<StyledSection>
+				<StyledH2>Single Notification</StyledH2>
+
+				<StyledDiv3>
+					<Notification message={"I'm a notification"} />
+				</StyledDiv3>
+			</StyledSection>
+
+			<StyledSection>
+				<StyledH2>Multiple Notification</StyledH2>
+
+				<StyledDiv3>
+					{/* <Notifications notifications={NOTIFICATIONS} /> */}
+
+					<Button onClick={addNotification}>Add new notification</Button>
+				</StyledDiv3>
+			</StyledSection>
+
 			<PageFooter />
 		</main>
 	)
@@ -330,5 +365,7 @@ const StyledDiv2 = styled.div`
 		width: 48%;
 	}
 `
+
+const StyledDiv3 = styled.div``
 
 export default App
