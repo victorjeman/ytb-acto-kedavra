@@ -14,6 +14,8 @@ import { Button } from 'components/button/button'
 
 //? What is a pure function?
 function generateBadgesFromHobbies(hobbies) {
+	if (!Array.isArray(hobbies)) return []
+
 	return hobbies.map((hobby) => ({
 		type: BADGE_TYPE.PRIMARY,
 		size: SIZE.XS,
