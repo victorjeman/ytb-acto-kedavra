@@ -3,7 +3,13 @@ import styled from 'styled-components/macro'
 import { StyledButton } from 'components/button/button'
 import { ReadMore, StyledText } from 'components/read-more/read-more'
 
-export const ActorReadMore = ({ text, limit, className }) => {
+interface Props {
+	text: string
+	limit?: number
+	className?: string
+}
+
+export const ActorReadMore = ({ text, limit = 40, className }: Props) => {
 	return (
 		<StyledActorReadMore className={className}>
 			<ReadMore text={text} limit={limit} />

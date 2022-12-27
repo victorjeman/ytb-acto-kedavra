@@ -12,16 +12,25 @@ import { Button } from 'components/button/button'
 const KEYDOWN = 'keydown'
 const MODAL_OPEN_CLASS = 'modal-is-opened'
 
-//? Why the function is outside the component?
-const checkIfEscapeIsDown = (event) => event.code === ESCAPE_BTN_CODE
+const checkIfEscapeIsDown = (event: KeyboardEvent) => event.code === ESCAPE_BTN_CODE
 
-const toggleBodyClass = (open) => {
+const toggleBodyClass = (open: boolean) => {
 	if (open) return document.body.classList.add(MODAL_OPEN_CLASS)
 
 	document.body.classList.remove(MODAL_OPEN_CLASS)
 }
 
-export const Modal = ({ title, children, onClose, isOpen = false, overlay = true }) => {
+const modalRoot = document.querySelector('body') as HTMLElement
+
+interface Props {
+	title: string
+	children: JSX.Element | JSX.Element[]
+	isOpen: boolean
+	overlay?: boolean
+	onClose: () => void
+}
+
+export const Modal = ({ title, children, onClose, isOpen = false, overlay = true }: Props) => {
 	const [openModal, setOpenModal] = useState(false)
 
 	const closeModal = () => {
@@ -31,7 +40,7 @@ export const Modal = ({ title, children, onClose, isOpen = false, overlay = true
 		if (onClose) onClose()
 	}
 
-	const closeModalWithEscape = (event) => {
+	const closeModalWithEscape = (event: KeyboardEvent) => {
 		if (checkIfEscapeIsDown(event)) closeModal()
 	}
 
@@ -40,7 +49,6 @@ export const Modal = ({ title, children, onClose, isOpen = false, overlay = true
 
 		return () => window.removeEventListener(KEYDOWN, closeModalWithEscape)
 
-		//? Why this comment?
 		//eslint-disable-next-line
 	}, [])
 
@@ -79,7 +87,7 @@ export const Modal = ({ title, children, onClose, isOpen = false, overlay = true
 				</>
 			)}
 		</AnimatePresence>,
-		document.querySelector('body'),
+		modalRoot,
 	)
 }
 

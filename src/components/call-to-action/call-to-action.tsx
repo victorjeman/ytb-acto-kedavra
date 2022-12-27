@@ -1,9 +1,9 @@
 import styled from 'styled-components/macro'
+import { TfiFaceSad } from 'react-icons/tfi'
 
 import { SIZE } from 'constants/size.constants'
 
 import { Button, StyledButton } from 'components/button/button'
-import { ReactComponent as IconSadFace } from 'assets/icons/sad-face.svg'
 
 export const CallToAction = () => {
 	return (
@@ -11,7 +11,9 @@ export const CallToAction = () => {
 			<StyledSadFace />
 			<StyledText>There are no actors here. Consider adding one.</StyledText>
 
-			<Button size={SIZE.XL3}>Add new actor</Button>
+			<Button onClick={() => {}} size={SIZE.XL3}>
+				Add new actor
+			</Button>
 		</StyledCallToAction>
 	)
 }
@@ -31,8 +33,9 @@ const StyledCallToAction = styled.div`
 	}
 `
 
-const StyledSadFace = styled(IconSadFace)`
+const StyledSadFace = styled(TfiFaceSad)`
 	margin-bottom: 1rem;
+	font-size: 10rem;
 `
 
 const StyledText = styled.p`

@@ -2,6 +2,18 @@ import styled, { css } from 'styled-components/macro'
 
 import { BUTTON_TYPE, ICON_POSITION } from 'constants/general.constants'
 import { SIZE } from 'constants/size.constants'
+import { ButtonType, Size, IconPosition } from 'models/common.models'
+
+interface Props {
+	type?: ButtonType
+	size?: Size
+	iconPosition?: IconPosition
+	isFullWidth?: boolean
+	icon?: JSX.Element
+	children?: JSX.Element | JSX.Element[] | string
+	[x: string]: any
+	onClick?: () => void
+}
 
 export const Button = ({
 	type = BUTTON_TYPE.PRIMARY,
@@ -12,9 +24,9 @@ export const Button = ({
 	onClick,
 	children,
 	...rest
-}) => {
-	const showIconLeft = icon && iconPosition === ICON_POSITION.LEFT
-	const showIconRight = icon && iconPosition === ICON_POSITION.RIGHT
+}: Props) => {
+	const showIconLeft = !!icon && iconPosition === ICON_POSITION.LEFT
+	const showIconRight = !!icon && iconPosition === ICON_POSITION.RIGHT
 	const isCircle = type === BUTTON_TYPE.CIRCLE
 	const isText = type === BUTTON_TYPE.TEXT
 	const shouldHavePadding = !isCircle
@@ -29,7 +41,7 @@ export const Button = ({
 			$showIconLeft={showIconLeft}
 			$showIconRight={showIconRight}
 			$isFullWidth={isFullWidth}
-			onClick={onClick}
+			{...(!!onClick && { onClick })}
 			{...rest}>
 			{showIconLeft && icon}
 
@@ -40,7 +52,19 @@ export const Button = ({
 	)
 }
 
-export const StyledButton = styled.button`
+interface StyledButtonModel {
+	$size: Size
+	$type: ButtonType
+	$isCircle: boolean
+	$isText: boolean
+	$shouldHavePadding: boolean
+	$showIconLeft: boolean
+	$showIconRight: boolean
+	$isFullWidth: boolean
+	onClick?: () => void
+}
+
+export const StyledButton = styled.button<StyledButtonModel>`
 	cursor: pointer;
 	display: inline-flex;
 	justify-content: center;

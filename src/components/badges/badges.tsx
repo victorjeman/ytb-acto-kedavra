@@ -1,12 +1,18 @@
 import styled from 'styled-components/macro'
 
 import { Badge } from 'components/badge/badge'
+import { IBadge } from 'models/common.models'
 
-export const Badges = ({ badges, className }) => {
+interface Props {
+	badges: IBadge[]
+	className?: string
+}
+
+export const Badges = ({ badges, className }: Props) => {
 	return (
 		<StyledBadges className={className}>
 			{badges.map((badge) => (
-				<StyledBadgesItem key={badge.key}>
+				<StyledBadgesItem key={badge.id}>
 					<Badge type={badge.type} size={badge.size}>
 						{badge.text}
 					</Badge>

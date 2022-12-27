@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styled from 'styled-components/macro'
 import { MdOutlineModeEdit } from 'react-icons/md'
 import { GrClose } from 'react-icons/gr'
+import { nanoid } from 'nanoid'
 
 import {
 	BUTTON_TYPE,
@@ -24,12 +25,12 @@ import { ActorThumbnail } from 'components/actor-thumbnail/actor-thumbnail'
 import { Modal } from 'components/modal/modal'
 import { SelectAllActors } from 'components/select-all-actors/select-all-actors'
 import { CallToAction } from 'components/call-to-action/call-to-action'
-import { Notification } from 'components/notification/notification'
 import { useNotification } from 'services/notification-provider/notification-provider'
 import { ActorForm } from 'components/actor-form/actor-form'
 import { ActorFormV2 } from 'components/actor-form/actor-form-v2'
 import { ActorFormV3 } from 'components/actor-form/actor-form-v3'
 import { ActorThumbnailV2 } from 'components/actor-thumbnail/actor-thumbnail-v2'
+import { IActor } from 'models/common.models'
 
 const ACTOR = {
 	score: 80,
@@ -42,6 +43,17 @@ const ACTOR = {
 		"Leonardo is an American actor and film producer. Known for his work as a leading man in biopics and period films, he is the recipient of numerous accolades, including an Academy Award, a British Academy Film Award, and three Golden Globe Awards. As of 2019, his films have grossed over $7.2 billion worldwide, and he has been placed eight times in annual rankings of the world's highest-paid actors.",
 }
 
+const BADGES = [
+	{ type: BADGE_TYPE.PRIMARY, text: 'Actor', size: SIZE.XS, id: nanoid() },
+	{ type: BADGE_TYPE.PRIMARY, text: 'Writer', size: SIZE.XS, id: nanoid() },
+	{ type: BADGE_TYPE.PRIMARY, text: 'Director', size: SIZE.BASE, id: nanoid() },
+	{ type: BADGE_TYPE.PRIMARY, text: 'Something else', size: SIZE.BASE, id: nanoid() },
+	{ type: BADGE_TYPE.SECONDARY, text: 'Manager', size: SIZE.XL, id: nanoid() },
+	{ type: BADGE_TYPE.SECONDARY, text: 'Programmer', size: SIZE.XL, id: nanoid() },
+	{ type: BADGE_TYPE.SECONDARY, text: 'Dancer', size: SIZE.XL2, id: nanoid() },
+	{ type: BADGE_TYPE.SECONDARY, text: 'Guru', size: SIZE.XL2, id: nanoid() },
+]
+
 const ACTORS = [
 	ACTOR,
 	{ ...ACTOR, hobbies: ['Traveling', 'Reading', 'Puzzles', 'Traveling', 'Something else'] },
@@ -50,7 +62,7 @@ const ACTORS = [
 function App() {
 	const [message, setMessage] = useState('hello')
 	const [showMeSomething, setShowMeSomething] = useState(false)
-	const [actors, setActors] = useState([])
+	const [actors, setActors] = useState<IActor[]>([])
 
 	const dispatch = useNotification()
 
@@ -66,7 +78,7 @@ function App() {
 		})
 	}
 
-	const addActor = (actor) => {
+	const addActor = (actor: IActor) => {
 		setActors([...actors, actor])
 	}
 
@@ -248,18 +260,7 @@ function App() {
 			<StyledSection>
 				<StyledH2>List of Badges</StyledH2>
 				<StyledDiv>
-					<Badges
-						badges={[
-							{ type: BADGE_TYPE.PRIMARY, text: 'Actor', size: SIZE.XS, key: 1 },
-							{ type: BADGE_TYPE.PRIMARY, text: 'Writer', size: SIZE.XS, key: 2 },
-							{ type: BADGE_TYPE.PRIMARY, text: 'Director', size: SIZE.BASE, key: 3 },
-							{ type: BADGE_TYPE.PRIMARY, text: 'Something else', size: SIZE.BASE, key: 4 },
-							{ type: BADGE_TYPE.SECONDARY, text: 'Manager', size: SIZE.XL, key: 5 },
-							{ type: BADGE_TYPE.SECONDARY, text: 'Programmer', size: SIZE.XL, key: 6 },
-							{ type: BADGE_TYPE.SECONDARY, text: 'Dancer', size: SIZE.XL2, key: 7 },
-							{ type: BADGE_TYPE.SECONDARY, text: 'Guru', size: SIZE.XL2, key: 8 },
-						]}
-					/>
+					<Badges badges={BADGES} />
 				</StyledDiv>
 			</StyledSection>
 
@@ -299,7 +300,7 @@ function App() {
 								praesentium doloribus accusamus dignissimos ducimus laudantium ratione dolorem sint!
 							</p>
 
-							<Button>Button</Button>
+							<Button onClick={() => {}}>Button</Button>
 
 							<p>Dolorum id sit velit porro natus suscipit illo iure magnam.</p>
 
@@ -323,14 +324,6 @@ function App() {
 				<StyledDiv2>
 					<CallToAction />
 				</StyledDiv2>
-			</StyledSection>
-
-			<StyledSection>
-				<StyledH2>Single Notification</StyledH2>
-
-				<StyledDiv3>
-					<Notification message={"I'm a notification"} />
-				</StyledDiv3>
 			</StyledSection>
 
 			<StyledSection>
