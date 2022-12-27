@@ -9,7 +9,13 @@ import { SIZE } from 'constants/size.constants'
 import { Button } from 'components/button/button'
 import { Modal } from 'components/modal/modal'
 
-export const SelectAllActors = ({ onSelectAll, onDeleteAll, selectedActors = 0 }) => {
+interface Props {
+	onSelectAll?: () => void
+	onDeleteAll?: () => void
+	selectedActors: number
+}
+
+export const SelectAllActors = ({ onSelectAll, onDeleteAll, selectedActors = 0 }: Props) => {
 	const [title, setTitle] = useState(`${selectedActors} Selected`)
 	const [openModal, setOpenModal] = useState(false)
 

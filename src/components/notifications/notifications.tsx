@@ -1,8 +1,14 @@
 import styled from 'styled-components/macro'
 
+import { INotification, NotificationType } from 'models/common.models'
 import { Notification } from 'components/notification/notification'
 
-export const Notifications = ({ notifications = [], dispatch }) => {
+interface Props {
+	notifications: INotification[]
+	dispatch: ({ type, id }: { type: NotificationType; id: string }) => void
+}
+
+export const Notifications = ({ notifications = [], dispatch }: Props) => {
 	return (
 		<>
 			{notifications.map((notification) => (

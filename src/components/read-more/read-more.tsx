@@ -12,6 +12,7 @@ export const ReadMore = ({ text = '', limit = READ_MORE_LIMIT }) => {
 
 	const hasMoreText = text?.length > visibleText.length
 	const icon = hasMoreText ? <MdKeyboardArrowDown /> : <MdKeyboardArrowUp />
+	const buttonText = `Read ${hasMoreText ? 'more' : 'less'}`
 
 	const toggleVisibleText = () => {
 		if (hasMoreText) setVisibleText(text)
@@ -30,7 +31,7 @@ export const ReadMore = ({ text = '', limit = READ_MORE_LIMIT }) => {
 				iconPosition={ICON_POSITION.RIGHT}
 				onClick={toggleVisibleText}
 				icon={icon}>
-				Read {hasMoreText ? 'more' : 'less'}
+				{buttonText}
 			</Button>
 		</div>
 	)

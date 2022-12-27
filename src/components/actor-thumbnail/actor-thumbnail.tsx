@@ -11,28 +11,24 @@ import { SIZE } from 'constants/size.constants'
 import { ActorReadMore, StyledActorReadMore } from 'components/actor-read-more/actor-read-more'
 import { Badges, StyledBadges } from 'components/badges/badges'
 import { Button } from 'components/button/button'
+import { IActor, IBadge } from 'models/common.models'
 
-//? What is a pure function?
-function generateBadgesFromHobbies(hobbies) {
+function generateBadgesFromHobbies(hobbies: string[]) {
 	if (!Array.isArray(hobbies)) return []
 
 	return hobbies.map((hobby) => ({
 		type: BADGE_TYPE.PRIMARY,
 		size: SIZE.XS,
 		text: hobby,
-		key: nanoid(), //? What is nanoid? DON'T generate dynamic keys inside JSX. Why?
+		id: nanoid(),
 	}))
 }
 
-export const ActorThumbnail = ({ actor, setMessage }) => {
+export const ActorThumbnail = ({ actor }: { actor: IActor }) => {
 	const { hobbies, image, firstName, lastName, job, score, description } = actor
 
-	const [badges, setBadges] = useState([])
+	const [badges, setBadges] = useState<IBadge[] | []>([])
 
-	//? DON'T call the function directly inside the component. Why?
-	// const badges = generateBadgesFromHobbies(hobbies)
-
-	//? DO call the function inside useEffect. Why?
 	useEffect(() => {
 		setBadges(generateBadgesFromHobbies(hobbies))
 	}, [hobbies])
@@ -62,11 +58,13 @@ export const ActorThumbnail = ({ actor, setMessage }) => {
 					isFullWidth={true}
 					icon={<MdOutlineModeEdit />}
 					iconPosition={ICON_POSITION.RIGHT}
-					onClick={() => setMessage(nanoid())}>
+					onClick={() => {}}>
 					Edit
 				</Button>
 
 				<StyledRemove>
+					{/* TODO: Don't leave me like this please */}
+					{/*  @ts-ignore: Unreachable code error */}
 					<Button type={BUTTON_TYPE.CIRCLE} icon={<GrClose />} />
 				</StyledRemove>
 			</StyledContent>

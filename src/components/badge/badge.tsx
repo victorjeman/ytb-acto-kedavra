@@ -1,9 +1,19 @@
 import styled, { css } from 'styled-components/macro'
 
-import { SIZE } from 'constants/size.constants'
-import { BADGE_TYPE } from 'constants/general.constants'
+import { BadgeType, Size } from 'models/common.models'
 
-export const Badge = ({ children, type = BADGE_TYPE.PRIMARY, size = SIZE.BASE }) => {
+interface Props {
+	children: JSX.Element | string
+	type?: BadgeType
+	size?: Size
+}
+
+interface IBadge {
+	$type: BadgeType
+	$size: Size
+}
+
+export const Badge = ({ children, type = 'primary', size = 'base' }: Props) => {
 	return (
 		<StyledBadge $type={type} $size={size}>
 			{children}
@@ -11,8 +21,8 @@ export const Badge = ({ children, type = BADGE_TYPE.PRIMARY, size = SIZE.BASE })
 	)
 }
 
-export const StyledBadge = styled.span`
-	${({ $type }) =>
+export const StyledBadge = styled.span<IBadge>`
+	${({ $type }: { $type: BadgeType }) =>
 		css`
 			color: var(--badge-color-${$type});
 			background-color: var(--badge-bg-${$type});

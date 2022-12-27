@@ -6,11 +6,20 @@ import styled, { css } from 'styled-components/macro'
 
 import { NOTIFICATION_ACTION_TYPE, NOTIFICATION_TYPE } from 'constants/general.constants'
 import { SIZE } from 'constants/size.constants'
+import { NotificationType, Size } from 'models/common.models'
 
 const NOTIFICATION_ICON = {
 	[NOTIFICATION_TYPE.SUCCESS]: <MdDone />,
 	[NOTIFICATION_TYPE.WARNING]: <AiOutlineQuestionCircle />,
 	[NOTIFICATION_TYPE.DANGER]: <AiOutlineExclamationCircle />,
+}
+
+interface Props {
+	type?: NotificationType
+	size?: Size
+	id: string
+	message: string
+	dispatch: ({ type, id }: { type: NotificationType; id: string }) => void
 }
 
 export const Notification = ({
@@ -19,7 +28,7 @@ export const Notification = ({
 	id,
 	message,
 	dispatch,
-}) => {
+}: Props) => {
 	const removeNotification = () => {
 		dispatch({
 			type: NOTIFICATION_ACTION_TYPE.REMOVE_NOTIFICATION,
@@ -40,7 +49,12 @@ export const Notification = ({
 	)
 }
 
-const StyledNotification = styled.div`
+interface StyledNotificationInterface {
+	$size: Size
+	$type: NotificationType
+}
+
+const StyledNotification = styled.div<StyledNotificationInterface>`
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -65,7 +79,7 @@ const StyledButton = styled.button`
 	line-height: 1;
 	position: absolute;
 	top: 0;
-	right: ${({ $size }) => `var(--padding-${$size})`};
+	right: ${({ $size }: { $size: Size }) => `var(--padding-${$size})`};
 	bottom: 0;
 	left: auto;
 	margin: auto;

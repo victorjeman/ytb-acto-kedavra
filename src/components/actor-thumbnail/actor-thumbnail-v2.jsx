@@ -21,7 +21,7 @@ function generateBadgesFromHobbies(hobbies) {
 		type: BADGE_TYPE.PRIMARY,
 		size: SIZE.XS,
 		text: hobby,
-		key: nanoid(), //? What is nanoid? DON'T generate dynamic keys inside JSX. Why?
+		id: nanoid(), //? What is nanoid? DON'T generate dynamic keys inside JSX. Why?
 	}))
 }
 

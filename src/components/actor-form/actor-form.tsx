@@ -1,16 +1,34 @@
 import styled from 'styled-components/macro'
-import { useState } from 'react'
-import { z } from 'zod'
+import { SyntheticEvent, useState } from 'react'
+import { z, ZodError } from 'zod'
+
+import { BUTTON_TYPE } from 'constants/general.constants'
+import { IActor } from 'models/common.models'
 
 import { Button } from 'components/button/button'
-import { BUTTON_TYPE } from 'constants/general.constants'
 
-export const ActorForm = ({ onSubmit }) => {
-	const [name, setName] = useState('')
+interface Props {
+	onSubmit: (actor: IActor) => void
+}
+
+export const ActorForm = ({ onSubmit }: Props) => {
+	const [firstName, setFirstName] = useState('')
+	const [lastName, setLastName] = useState('')
 	const [field, setField] = useState('')
 	const [hobbies, setHobbies] = useState('')
 	const [description, setDescription] = useState('')
-	const [schemaValidated, setSchemaValidated] = useState({})
+	const [schemaValidated, setSchemaValidated] = useState<
+		z.ZodFormattedError<
+			{
+				firstName: string
+				lastName: string
+				field: string
+				hobbies: string
+				description: string
+			},
+			string
+		>
+	>()
 
 	const actorSchema = z.object({
 		name: z.string().min(1),
@@ -19,11 +37,20 @@ export const ActorForm = ({ onSubmit }) => {
 		description: z.string().min(4),
 	})
 
-	const addActor = (event) => {
+	const addActor = (event: SyntheticEvent) => {
 		event.preventDefault()
 		event.stopPropagation()
 
-		const actor = { name, field, hobbies, description }
+		const actor: IActor = {
+			firstName,
+			lastName,
+			field,
+			hobbies: [],
+			description,
+			job: '',
+			score: 0,
+			image: '',
+		}
 		const data = actorSchema.safeParse(actor)
 
 		if (!data.success) {
@@ -31,24 +58,40 @@ export const ActorForm = ({ onSubmit }) => {
 			return setSchemaValidated(formatted)
 		}
 
-		setSchemaValidated({})
+		// TODO: Check me
+		// setSchemaValidated({ name: '', field: '', hobbies: '', description: '' })
 		onSubmit(actor)
 	}
 
 	return (
 		<form onSubmit={addActor}>
 			<StyledFormGroup>
-				<StyledLabel htmlFor='name'>Name</StyledLabel>
+				<StyledLabel htmlFor='firstName'>First Name</StyledLabel>
 				<StyledInput
 					type='text'
-					id='name'
+					id='firstName'
 					onChange={(event) => {
-						setName(event.target.value)
+						setFirstName(event.target.value)
 					}}
 				/>
 
-				{schemaValidated?.name?._errors && (
-					<StyledMessage>{schemaValidated?.name?._errors}</StyledMessage>
+				{schemaValidated?.firstName?._errors && (
+					<StyledMessage>{schemaValidated?.firstName?._errors}</StyledMessage>
+				)}
+			</StyledFormGroup>
+
+			<StyledFormGroup>
+				<StyledLabel htmlFor='firstName'>Last Name</StyledLabel>
+				<StyledInput
+					type='lastName'
+					id='lastName'
+					onChange={(event) => {
+						setLastName(event.target.value)
+					}}
+				/>
+
+				{schemaValidated?.lastName?._errors && (
+					<StyledMessage>{schemaValidated?.lastName?._errors}</StyledMessage>
 				)}
 			</StyledFormGroup>
 
@@ -97,8 +140,12 @@ export const ActorForm = ({ onSubmit }) => {
 				)}
 			</StyledFormGroup>
 
+			{/* TODO: Don't leave me like this please */}
+			{/*  @ts-ignore: Unreachable code error */}
 			<Button isFullWidth={true}>Add new Actor</Button>
 
+			{/* TODO: Don't leave me like this please */}
+			{/*  @ts-ignore: Unreachable code error */}
 			<Button type={BUTTON_TYPE.TEXT} isFullWidth={true}>
 				I changed my mind
 			</Button>
