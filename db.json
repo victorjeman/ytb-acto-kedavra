@@ -1,21 +1,6 @@
 {
   "actors": [
     {
-      "image": "/images/actors/5.png",
-      "firstName": "Brad",
-      "lastName": "Pitt",
-      "job": "Actor & Producer",
-      "score": 10,
-      "hobbies": [
-        "Swimming",
-        "Golf",
-        "Sculpture"
-      ],
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!",
-      "id": 5,
-      "nanoid": "5"
-    },
-    {
       "firstName": "Zendaya 3",
       "lastName": "Zendaya",
       "job": "Actress & Director",
@@ -31,7 +16,7 @@
       "nanoid": "6"
     },
     {
-      "firstName": "Morgan 22",
+      "firstName": "Morgan 23",
       "lastName": "Freeman",
       "job": "Actor & Producer",
       "hobbies": [
@@ -46,43 +31,17 @@
       "nanoid": "7"
     },
     {
-      "firstName": "adad",
+      "firstName": "adada",
       "lastName": "adad",
-      "job": "adad",
+      "job": "adadaa",
       "hobbies": [
-        "adad"
+        "dada"
       ],
-      "description": "adad",
-      "image": "adad",
+      "description": "adadad",
+      "image": "adada",
       "score": 0,
-      "nanoid": "P3OM9d9wbudHgx_OCrUdd",
+      "nanoid": "bFMg7PRIMAJrExDzq58xx",
       "id": 8
-    },
-    {
-      "firstName": "11",
-      "lastName": "111",
-      "job": "11",
-      "hobbies": [
-        "111"
-      ],
-      "description": "11",
-      "image": "111",
-      "score": 0,
-      "nanoid": "CHs7bD--TK4SyCPGzA__n",
-      "id": 9
-    },
-    {
-      "firstName": "adad",
-      "lastName": "ada",
-      "job": "adad",
-      "hobbies": [
-        "ada"
-      ],
-      "description": "ada",
-      "image": "ada",
-      "score": 0,
-      "nanoid": "V82CWjUcRwEb5s5uL-ky3",
-      "id": 10
     }
   ]
 }
