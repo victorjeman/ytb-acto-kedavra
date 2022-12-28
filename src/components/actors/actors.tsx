@@ -3,122 +3,68 @@ import { useEffect, useState } from 'react'
 import { NOTIFICATION_ACTION_TYPE, NOTIFICATION_TYPE } from 'constants/general.constants'
 import { IActor } from 'models/common.models'
 import { useNotification } from 'services/notification-provider/notification-provider'
+import { deleteActorByIdAPI, addActorAPI, editActorAPI } from 'services/actor-service/actor.service'
+import { useActors } from 'hooks/use-actors'
 
 import { ActorThumbnail } from 'components/actor-thumbnail/actor-thumbnail'
-import { ActorForm } from '~/components/actor-form/actor-form'
-import { Button } from '~/components/button/button'
-import { Modal } from '~/components/modal/modal'
+import { ActorForm } from 'components/actor-form/actor-form'
+import { Button } from 'components/button/button'
+import { Modal } from 'components/modal/modal'
 
 export const Actors = () => {
-	const [actors, setActors] = useState<IActor[]>([])
 	const [showModal, setShowModal] = useState<boolean>(false)
 	const [actorToEdit, setActorToEdit] = useState<IActor | undefined>()
+	const [actors, setActors] = useState<IActor[]>([])
 
+	const initialActors = useActors()
 	const dispatch = useNotification()
 
 	useEffect(() => {
-		;(async () => {
-			const actorsData = await window.fetch('http://localhost:3004/actors')
-			const actors = await actorsData.json()
+		setActors(initialActors)
+	}, [initialActors])
 
-			setActors(actors)
-		})()
-	}, [])
+	const deleteActor = async (id: number) => {
+		const { success, data } = await deleteActorByIdAPI(id, actors)
 
-	const deleteActorById = async (id: number) => {
-		const actorDeleted = await window.fetch(`http://localhost:3004/actors/${id}`, {
-			method: 'DELETE',
+		setActors(data)
+
+		dispatch({
+			actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
+			type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
+			message: success ? 'Actor successfully deleted!' : "Wasn't able to delete the actor",
 		})
-
-		if (actorDeleted?.ok) {
-			const actorsUpdated = actors.filter((actor) => actor.id !== id)
-
-			setActors(actorsUpdated)
-
-			dispatch({
-				actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
-				type: NOTIFICATION_TYPE.SUCCESS,
-				message: 'Actor successfully deleted!',
-			})
-		} else {
-			dispatch({
-				actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
-				type: NOTIFICATION_TYPE.DANGER,
-				message: "Wasn't able to delete the actor",
-			})
-		}
 	}
 
 	const addActor = async (actor: IActor) => {
+		const { data, success } = await addActorAPI(actor, actors)
+
+		setActors(data)
 		setShowModal(false)
 
-		const response = await window.fetch('http://localhost:3004/actors', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(actor),
+		dispatch({
+			actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
+			type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
+			message: success ? 'Actor successfully added!' : 'Actor add error!',
 		})
-
-		const addedActor = await response.json()
-
-		if (response.ok) {
-			setActors([...actors, addedActor])
-			dispatch({
-				actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
-				type: NOTIFICATION_TYPE.SUCCESS,
-				message: 'Actor successfully added!',
-			})
-		} else {
-			dispatch({
-				actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
-				type: NOTIFICATION_TYPE.DANGER,
-				message: 'Actor add error!',
-			})
-		}
 	}
 
-	const getActorById = (id: number | undefined) => actors.find((actor) => actor.id === id)
-
 	const showFormActorInEditMode = async (id: number | undefined) => {
-		setActorToEdit(getActorById(id))
+		const actorToEdit = actors.find((actor) => actor.id === id)
+		setActorToEdit(actorToEdit)
 		setShowModal(true)
 	}
 
 	const editActor = async (actorToEdit: IActor) => {
-		const { id } = actorToEdit
+		const { data, success } = await editActorAPI(actorToEdit, actors)
 
-		const response = await window.fetch(`http://localhost:3004/actors/${id}`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(actorToEdit),
+		setActors(data)
+		setShowModal(false)
+
+		dispatch({
+			actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
+			type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
+			message: success ? 'Actor successfully edited!' : "Wasn't able to edit the actor!",
 		})
-
-		if (response?.ok) {
-			const editedActorFromAPI = await response.json()
-
-			const actorToEditIndex = actors.findIndex((actor) => actorToEdit.id)
-
-			const actorsUpdated = [...actors]
-			actorsUpdated[actorToEditIndex] = editedActorFromAPI
-			setActors(actorsUpdated)
-
-			setShowModal(false)
-
-			dispatch({
-				actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
-				type: NOTIFICATION_TYPE.SUCCESS,
-				message: 'Actor successfully edited',
-			})
-		} else {
-			dispatch({
-				actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
-				type: NOTIFICATION_TYPE.DANGER,
-				message: "Wasn't able to edit the actor",
-			})
-		}
 	}
 
 	const submit = (actor: IActor) => {
@@ -130,11 +76,7 @@ export const Actors = () => {
 		<section>
 			{actors?.map((actor) => (
 				<div key={actor.nanoid}>
-					<ActorThumbnail
-						actor={actor}
-						onDelete={deleteActorById}
-						onEdit={showFormActorInEditMode}
-					/>
+					<ActorThumbnail actor={actor} onDelete={deleteActor} onEdit={showFormActorInEditMode} />
 				</div>
 			))}
 

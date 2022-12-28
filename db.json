@@ -1,52 +1,6 @@
 {
   "actors": [
     {
-      "firstName": "Angelia edited 17",
-      "lastName": "Jolie",
-      "job": "Doing things",
-      "hobbies": [
-        "coding",
-        "gym",
-        "reading",
-        "doing nothing"
-      ],
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!",
-      "image": "/images/actors/2.png",
-      "score": 0,
-      "id": 2,
-      "nanoid": "2"
-    },
-    {
-      "id": 3,
-      "nanoid": "3",
-      "image": "/images/actors/3.png",
-      "firstName": "Jennifer ",
-      "lastName": "Aniston",
-      "job": "Doing things",
-      "score": 35,
-      "hobbies": [
-        "Traveling",
-        "Dogs",
-        "Art"
-      ],
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!"
-    },
-    {
-      "id": 4,
-      "nanoid": "4",
-      "image": "/images/actors/4.png",
-      "firstName": "Dwayne",
-      "lastName": "Johnson",
-      "job": "Doing things",
-      "score": 35,
-      "hobbies": [
-        "Gym Freak",
-        "Wrestling",
-        "Music"
-      ],
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!"
-    },
-    {
       "image": "/images/actors/5.png",
       "firstName": "Brad",
       "lastName": "Pitt",
@@ -62,34 +16,73 @@
       "nanoid": "5"
     },
     {
-      "image": "/images/actors/6.png",
-      "firstName": "Zendaya",
+      "firstName": "Zendaya 3",
       "lastName": "Zendaya",
       "job": "Actress & Director",
-      "score": 10,
       "hobbies": [
         "Dancing",
         "Singing",
         "Fashion"
       ],
       "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!",
+      "image": "/images/actors/6.png",
+      "score": 0,
       "id": 6,
       "nanoid": "6"
     },
     {
-      "image": "/images/actors/7.png",
-      "firstName": "Morgan",
+      "firstName": "Morgan 22",
       "lastName": "Freeman",
       "job": "Actor & Producer",
-      "score": 10,
       "hobbies": [
         "Sailling",
         "Beekeeping",
         "Being God"
       ],
       "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!",
+      "image": "/images/actors/7.png",
+      "score": 0,
       "id": 7,
       "nanoid": "7"
+    },
+    {
+      "firstName": "adad",
+      "lastName": "adad",
+      "job": "adad",
+      "hobbies": [
+        "adad"
+      ],
+      "description": "adad",
+      "image": "adad",
+      "score": 0,
+      "nanoid": "P3OM9d9wbudHgx_OCrUdd",
+      "id": 8
+    },
+    {
+      "firstName": "11",
+      "lastName": "111",
+      "job": "11",
+      "hobbies": [
+        "111"
+      ],
+      "description": "11",
+      "image": "111",
+      "score": 0,
+      "nanoid": "CHs7bD--TK4SyCPGzA__n",
+      "id": 9
+    },
+    {
+      "firstName": "adad",
+      "lastName": "ada",
+      "job": "adad",
+      "hobbies": [
+        "ada"
+      ],
+      "description": "ada",
+      "image": "ada",
+      "score": 0,
+      "nanoid": "V82CWjUcRwEb5s5uL-ky3",
+      "id": 10
     }
   ]
 }
