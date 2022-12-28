@@ -1,0 +1,74 @@
+{
+	"actors": [
+		{
+			"id": 1,
+			"image": "/images/actors/1.png",
+			"firstName": "Leondardo ",
+			"lasttName": "Dicaprio",
+			"occupation": "Doing things",
+			"likes": 35,
+			"hobbies": ["coding", "gym", "reading", "doing nothing"],
+			"description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!"
+		},
+		{
+			"id": 2,
+			"image": "/images/actors/2.png",
+			"firstName": "Angelia",
+			"lastName": "Jolie",
+			"occupation": "Doing things",
+			"likes": 35,
+			"hobbies": ["coding", "gym", "reading", "doing nothing"],
+			"description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!"
+		},
+		{
+			"image": "/images/actors/3.png",
+			"firstName": "Jennifer ",
+			"lastName": "Aniston",
+			"field": "Doing things",
+			"score": 35,
+			"hobbies": ["Traveling", "Dogs", "Art"],
+			"description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!",
+			"id": 3
+		},
+		{
+			"image": "/images/actors/4.png",
+			"firstName": "Dwayne",
+			"lastName": "Johnson",
+			"field": "Doing things",
+			"score": 35,
+			"hobbies": ["Gym Freak", "Wrestling", "Music"],
+			"description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!",
+			"id": 4
+		},
+		{
+			"image": "/images/actors/5.png",
+			"firstName": "Brad",
+			"lastName": "Pitt",
+			"field": "Actor & Producer",
+			"score": 10,
+			"hobbies": ["Swimming", "Golf", "Sculpture"],
+			"description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!",
+			"id": 5
+		},
+		{
+			"image": "/images/actors/6.png",
+			"firstName": "Zendaya",
+			"lastName": "Zendaya",
+			"field": "Actress & Director",
+			"score": 10,
+			"hobbies": ["Dancing", "Singing", "Fashion"],
+			"description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!",
+			"id": 6
+		},
+		{
+			"image": "/images/actors/7.png",
+			"firstName": "Morgan Freeman",
+			"lastName": "Morgan Freeman",
+			"field": "Actor & Producer",
+			"score": 10,
+			"hobbies": ["Sailling", "Beekeeping", "Being God"],
+			"description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!",
+			"id": 7
+		}
+	]
+}

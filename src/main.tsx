@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './app'
 
+import 'virtual:fonts.css'
+
 import 'the-new-css-reset/css/reset.css'
 import 'styles/variables.css'
 
@@ -14,6 +16,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
 		<GlobalCSSSizeVariables />
 		<GlobalCSSElements />
+
 		<NotificationProvider>
 			<App />
 		</NotificationProvider>

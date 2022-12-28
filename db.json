@@ -1,0 +1,95 @@
+{
+  "actors": [
+    {
+      "firstName": "Angelia edited 17",
+      "lastName": "Jolie",
+      "job": "Doing things",
+      "hobbies": [
+        "coding",
+        "gym",
+        "reading",
+        "doing nothing"
+      ],
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!",
+      "image": "/images/actors/2.png",
+      "score": 0,
+      "id": 2,
+      "nanoid": "2"
+    },
+    {
+      "id": 3,
+      "nanoid": "3",
+      "image": "/images/actors/3.png",
+      "firstName": "Jennifer ",
+      "lastName": "Aniston",
+      "job": "Doing things",
+      "score": 35,
+      "hobbies": [
+        "Traveling",
+        "Dogs",
+        "Art"
+      ],
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!"
+    },
+    {
+      "id": 4,
+      "nanoid": "4",
+      "image": "/images/actors/4.png",
+      "firstName": "Dwayne",
+      "lastName": "Johnson",
+      "job": "Doing things",
+      "score": 35,
+      "hobbies": [
+        "Gym Freak",
+        "Wrestling",
+        "Music"
+      ],
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!"
+    },
+    {
+      "image": "/images/actors/5.png",
+      "firstName": "Brad",
+      "lastName": "Pitt",
+      "job": "Actor & Producer",
+      "score": 10,
+      "hobbies": [
+        "Swimming",
+        "Golf",
+        "Sculpture"
+      ],
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!",
+      "id": 5,
+      "nanoid": "5"
+    },
+    {
+      "image": "/images/actors/6.png",
+      "firstName": "Zendaya",
+      "lastName": "Zendaya",
+      "job": "Actress & Director",
+      "score": 10,
+      "hobbies": [
+        "Dancing",
+        "Singing",
+        "Fashion"
+      ],
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!",
+      "id": 6,
+      "nanoid": "6"
+    },
+    {
+      "image": "/images/actors/7.png",
+      "firstName": "Morgan",
+      "lastName": "Freeman",
+      "job": "Actor & Producer",
+      "score": 10,
+      "hobbies": [
+        "Sailling",
+        "Beekeeping",
+        "Being God"
+      ],
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!",
+      "id": 7,
+      "nanoid": "7"
+    }
+  ]
+}

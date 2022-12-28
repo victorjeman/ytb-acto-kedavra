@@ -24,8 +24,14 @@ function generateBadgesFromHobbies(hobbies: string[]) {
 	}))
 }
 
-export const ActorThumbnail = ({ actor }: { actor: IActor }) => {
-	const { hobbies, image, firstName, lastName, job, score, description } = actor
+interface Props {
+	actor: IActor
+	onDelete: (id: number) => void
+	onEdit: (id: number | undefined) => void
+}
+
+export const ActorThumbnail = ({ actor, onDelete, onEdit }: Props) => {
+	const { hobbies, image, firstName, lastName, job, score, description, id } = actor
 
 	const [badges, setBadges] = useState<IBadge[] | []>([])
 
@@ -58,14 +64,16 @@ export const ActorThumbnail = ({ actor }: { actor: IActor }) => {
 					isFullWidth={true}
 					icon={<MdOutlineModeEdit />}
 					iconPosition={ICON_POSITION.RIGHT}
-					onClick={() => {}}>
+					onClick={() => {
+						onEdit(id)
+					}}>
 					Edit
 				</Button>
 
 				<StyledRemove>
 					{/* TODO: Don't leave me like this please */}
 					{/*  @ts-ignore: Unreachable code error */}
-					<Button type={BUTTON_TYPE.CIRCLE} icon={<GrClose />} />
+					<Button type={BUTTON_TYPE.CIRCLE} icon={<GrClose />} onClick={() => onDelete(id)} />
 				</StyledRemove>
 			</StyledContent>
 		</StyledActorThumbnail>
