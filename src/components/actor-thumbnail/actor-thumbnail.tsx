@@ -26,8 +26,8 @@ function generateBadgesFromHobbies(hobbies: string[]) {
 
 interface Props {
 	actor: IActor
-	onDelete: (id: number) => void
-	onEdit: (id: number | undefined) => void
+	onDelete: (actor: IActor) => void
+	onEdit: (actor: IActor) => void
 }
 
 export const ActorThumbnail = ({ actor, onDelete, onEdit }: Props) => {
@@ -64,16 +64,14 @@ export const ActorThumbnail = ({ actor, onDelete, onEdit }: Props) => {
 					isFullWidth={true}
 					icon={<MdOutlineModeEdit />}
 					iconPosition={ICON_POSITION.RIGHT}
-					onClick={() => {
-						onEdit(id)
-					}}>
+					onClick={() => onEdit(actor)}>
 					Edit
 				</Button>
 
 				<StyledRemove>
 					{/* TODO: Don't leave me like this please */}
 					{/*  @ts-ignore: Unreachable code error */}
-					<Button type={BUTTON_TYPE.CIRCLE} icon={<GrClose />} onClick={() => onDelete(id)} />
+					<Button type={BUTTON_TYPE.CIRCLE} icon={<GrClose />} onClick={() => onDelete(actor)} />
 				</StyledRemove>
 			</StyledContent>
 		</StyledActorThumbnail>

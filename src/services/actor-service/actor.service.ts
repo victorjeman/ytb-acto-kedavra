@@ -1,6 +1,13 @@
 import { ACTOR_API } from 'constants/general.constants'
 import { IActor } from 'models/common.models'
 
+export const fetchActorsAPI = async () => {
+	const actorsData = await window.fetch(ACTOR_API)
+	const actors = await actorsData.json()
+
+	return actors
+}
+
 export const deleteActorByIdAPI = async (id: number, actors: IActor[]) => {
 	const fetchResponse = await window.fetch(`${ACTOR_API}/${id}`, { method: 'DELETE' })
 
