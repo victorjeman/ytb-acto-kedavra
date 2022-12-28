@@ -30,12 +30,13 @@ export type NotificationType = NotificationTypeValues
 export interface IActor {
 	firstName: string
 	lastName: string
-	job: string
 	score: number
-	field: string
-	hobbies: []
+	job: string
+	hobbies: string[]
 	description: string
 	image: string
+	id?: number
+	nanoid: string
 }
 
 export interface IBadge {

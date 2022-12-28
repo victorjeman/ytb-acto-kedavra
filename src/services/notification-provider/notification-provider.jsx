@@ -36,20 +36,33 @@ const StyledNotificationsContainer = styled.div`
 	top: 0;
 	left: 0;
 	width: 100%;
+	z-index: 99;
 `
 
 export const useNotification = () => {
 	const dispatch = useContext(NotificationContext)
 
 	return (props) => {
-		dispatch({
+		const notification = {
 			type: props.actionType,
 			payload: {
 				id: nanoid(),
 				message: props.message,
 				type: props.type,
+				...props,
 			},
-		})
+		}
+
+		if (props.actionType === NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION) {
+			window.setTimeout(() => {
+				dispatch({
+					type: NOTIFICATION_ACTION_TYPE.REMOVE_NOTIFICATION,
+					id: notification.payload.id,
+				})
+			}, 1200)
+		}
+
+		dispatch(notification)
 	}
 }
 
