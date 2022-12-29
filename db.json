@@ -1,7 +1,7 @@
 {
   "actors": [
     {
-      "firstName": "Zendaya 3",
+      "firstName": "Zendaya 20",
       "lastName": "Zendaya",
       "job": "Actress & Director",
       "hobbies": [
@@ -14,34 +14,6 @@
       "score": 0,
       "id": 6,
       "nanoid": "6"
-    },
-    {
-      "firstName": "Morgan 23",
-      "lastName": "Freeman",
-      "job": "Actor & Producer",
-      "hobbies": [
-        "Sailling",
-        "Beekeeping",
-        "Being God"
-      ],
-      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam iste excepturi harum reiciendis natus repellendus nostrum at amet, nobis id sint minima voluptas omnis dicta illo architecto! Ipsa, minima molestias!",
-      "image": "/images/actors/7.png",
-      "score": 0,
-      "id": 7,
-      "nanoid": "7"
-    },
-    {
-      "firstName": "adada",
-      "lastName": "adad",
-      "job": "adadaa",
-      "hobbies": [
-        "dada"
-      ],
-      "description": "adadad",
-      "image": "adada",
-      "score": 0,
-      "nanoid": "bFMg7PRIMAJrExDzq58xx",
-      "id": 8
     }
   ]
 }

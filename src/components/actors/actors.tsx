@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite'
 import { NOTIFICATION_ACTION_TYPE, NOTIFICATION_TYPE } from 'constants/general.constants'
 import { IActor } from 'models/common.models'
 import { useNotification } from 'services/notification-provider/notification-provider'
-import { useStore } from 'store/root.store'
+import { useStore } from 'store-mobx/root.store'
 
 import { ActorThumbnail } from 'components/actor-thumbnail/actor-thumbnail'
 import { ActorForm } from 'components/actor-form/actor-form'
@@ -24,7 +24,7 @@ export const Actors = observer(() => {
 	const handleActorSubmit = async (actor: IActor) => {
 		const { success } = await actorStore.handleActorSubmit(actor)
 
-		setShowModal(false)
+		actorStore.setShowModal(false)
 
 		dispatch({
 			actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
@@ -56,7 +56,7 @@ export const Actors = observer(() => {
 	}
 
 	const handleActorFormSubmit = (actor: IActor) => {
-		if (actorToEdit) handleActorUpdate(actor)
+		if (actorToUpdate) handleActorUpdate(actor)
 		else handleActorSubmit(actor)
 	}
 
