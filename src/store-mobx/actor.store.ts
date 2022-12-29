@@ -94,7 +94,7 @@ export class ActorStore {
 		this.showModal = visible
 	}
 
-	setActorToUpdate = (actor: IActor | undefined) => {
+	setActorToUpdate = (actor?: IActor) => {
 		this.actorToUpdate = actor
 	}
 }

@@ -10,6 +10,7 @@
 		"start:db": "json-server --watch db.json --port 3004"
 	},
 	"dependencies": {
+		"@reduxjs/toolkit": "^1.9.1",
 		"dayjs": "1.11.5",
 		"formik": "^2.2.9",
 		"framer-motion": "^7.6.12",
@@ -20,6 +21,7 @@
 		"react-dom": "^18.2.0",
 		"react-hook-form": "^7.41.1",
 		"react-icons": "^4.6.0",
+		"react-redux": "^8.0.5",
 		"react-router-dom": "^6.6.1",
 		"sass": "^1.57.1",
 		"styled-components": "5.3.6",
