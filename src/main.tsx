@@ -3,22 +3,22 @@ import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 
 import App from './app'
-import NotificationProvider from 'services/notification-provider/notification-provider'
-import { store } from 'store-redux/store'
-
-import { GlobalCSSSizeVariables } from 'styles/global-css-size-variables'
-import { GlobalCSSElements } from 'styles/global-css-elements'
+import NotificationProvider from '~/common/services/notification-provider/notification-provider'
+import { reduxStore } from '~/common/store/redux.store'
 
 import 'virtual:fonts.css'
 import 'the-new-css-reset/css/reset.css'
-import 'styles/variables.css'
+
+import '~/common/styles/variables.css'
+import { GlobalCSSSizeVariables } from '~/common/styles/global-css-size-variables'
+import { GlobalCSSElements } from '~/common/styles/global-css-elements'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
 		<GlobalCSSSizeVariables />
 		<GlobalCSSElements />
 
-		<Provider store={store}>
+		<Provider store={reduxStore}>
 			<NotificationProvider>
 				<App />
 			</NotificationProvider>

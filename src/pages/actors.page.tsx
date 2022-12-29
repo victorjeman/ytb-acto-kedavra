@@ -1,5 +1,4 @@
-// import { Actors } from 'components/actors/actors'
-import { Actors } from 'components/actors/actors-redux-toolkit'
+import { ActorList } from '~/features/actors/components/actor-list/actor-list'
 
 export const ActorsPage = () => {
 	return (
@@ -7,7 +6,7 @@ export const ActorsPage = () => {
 			<h1>Actors page</h1>
 
 			<div>actor filter</div>
-			<Actors />
+			<ActorList />
 		</div>
 	)
 }
