@@ -12,9 +12,8 @@ import {
 	NOTIFICATION_ACTION_TYPE,
 } from '~/common/constants/general.constants'
 import { SIZE } from '~/common/constants/size.constants'
+import { ACTORS, BADGES } from '~/common/constants/style-guide.constants'
 
-import { PageHeader } from '~/common/components/page-header/page-header'
-import { PageFooter } from '~/common/components/page-footer/page-footer'
 import { Button } from '~/common/components/button/button'
 import { ReadMore } from '~/common/components/read-more/read-more'
 import { ActorReadMore } from '~/common/components/actor-read-more/actor-read-more'
@@ -32,33 +31,6 @@ import { ActorFormV3 } from '~/common/components/actor-form/actor-form-v3'
 import { ActorThumbnailV2 } from '~/common/components/actor-thumbnail/actor-thumbnail-v2'
 import { IActor } from '~/features/actors/models/actor.models'
 
-const ACTOR = {
-	score: 80,
-	image: '/images/actors/leonardo.jpg',
-	firstName: 'Leonardo',
-	lastName: 'Dicaprio',
-	job: 'Actor & Writer',
-	hobbies: ['Traveling', 'Reading', 'Puzzles'],
-	description:
-		"Leonardo is an American actor and film producer. Known for his work as a leading man in biopics and period films, he is the recipient of numerous accolades, including an Academy Award, a British Academy Film Award, and three Golden Globe Awards. As of 2019, his films have grossed over $7.2 billion worldwide, and he has been placed eight times in annual rankings of the world's highest-paid actors.",
-}
-
-const BADGES = [
-	{ type: BADGE_TYPE.PRIMARY, text: 'Actor', size: SIZE.XS, id: nanoid() },
-	{ type: BADGE_TYPE.PRIMARY, text: 'Writer', size: SIZE.XS, id: nanoid() },
-	{ type: BADGE_TYPE.PRIMARY, text: 'Director', size: SIZE.BASE, id: nanoid() },
-	{ type: BADGE_TYPE.PRIMARY, text: 'Something else', size: SIZE.BASE, id: nanoid() },
-	{ type: BADGE_TYPE.SECONDARY, text: 'Manager', size: SIZE.XL, id: nanoid() },
-	{ type: BADGE_TYPE.SECONDARY, text: 'Programmer', size: SIZE.XL, id: nanoid() },
-	{ type: BADGE_TYPE.SECONDARY, text: 'Dancer', size: SIZE.XL2, id: nanoid() },
-	{ type: BADGE_TYPE.SECONDARY, text: 'Guru', size: SIZE.XL2, id: nanoid() },
-]
-
-const ACTORS = [
-	ACTOR,
-	{ ...ACTOR, hobbies: ['Traveling', 'Reading', 'Puzzles', 'Traveling', 'Something else'] },
-]
-
 export const StyleGuidePage = () => {
 	const [message, setMessage] = useState('hello')
 	const [showMeSomething, setShowMeSomething] = useState(false)
@@ -72,9 +44,11 @@ export const StyleGuidePage = () => {
 
 	const addNotification = () => {
 		dispatch({
-			actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
-			type: NOTIFICATION_TYPE.SUCCESS,
-			message: 'Un mesaj frumos',
+			type: NOTIFICATION_ACTION_TYPE.ADD,
+			payload: {
+				type: NOTIFICATION_TYPE.SUCCESS,
+				message: 'Un mesaj frumos',
+			},
 		})
 	}
 
@@ -84,7 +58,6 @@ export const StyleGuidePage = () => {
 
 	return (
 		<main className='app'>
-			<PageHeader />
 			<StyledH1>My components</StyledH1>
 
 			<StyledSection>
@@ -327,7 +300,7 @@ export const StyleGuidePage = () => {
 			</StyledSection>
 
 			<StyledSection>
-				<StyledH2>Multiple Notification</StyledH2>
+				<StyledH2>Multiple Notifications</StyledH2>
 
 				<StyledDiv3>
 					<Button onClick={addNotification}>Add new notification</Button>
@@ -339,7 +312,7 @@ export const StyleGuidePage = () => {
 
 				<StyledDiv3>
 					{actors.map((actor, index) => (
-						<ActorThumbnail onDelete={() => {}} actor={actor} key={index} />
+						<ActorThumbnail onDelete={() => {}} onEdit={() => {}} actor={actor} key={index} />
 					))}
 
 					{/* <ActorForm onSubmit={addActor} /> */}
@@ -349,8 +322,6 @@ export const StyleGuidePage = () => {
 					<ActorFormV3 onSubmit={addActor} />
 				</StyledDiv3>
 			</StyledSection>
-
-			<PageFooter />
 		</main>
 	)
 }

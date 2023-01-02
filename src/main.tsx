@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 
 import App from './app'
-import NotificationProvider from '~/common/services/notification-provider/notification-provider'
+import { NotificationProvider } from '~/common/services/notification-provider/notification-provider'
 import { reduxStore } from '~/common/store/redux.store'
 
 import 'virtual:fonts.css'

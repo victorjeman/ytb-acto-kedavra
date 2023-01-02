@@ -33,9 +33,11 @@ export const ActorList = () => {
 		setActors(data)
 
 		dispatch({
-			actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
-			type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
-			message: success ? 'Actor successfully deleted!' : "Wasn't able to delete the actor",
+			type: NOTIFICATION_ACTION_TYPE.ADD,
+			payload: {
+				type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
+				message: success ? 'Actor successfully deleted!' : "Wasn't able to delete the actor",
+			},
 		})
 	}
 
@@ -46,9 +48,11 @@ export const ActorList = () => {
 		setShowModal(false)
 
 		dispatch({
-			actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
-			type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
-			message: success ? 'Actor successfully added!' : 'Actor add error!',
+			type: NOTIFICATION_ACTION_TYPE.ADD,
+			payload: {
+				type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
+				message: success ? 'Actor successfully added!' : 'Actor add error!',
+			},
 		})
 	}
 
@@ -64,9 +68,11 @@ export const ActorList = () => {
 		setShowModal(false)
 
 		dispatch({
-			actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
-			type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
-			message: success ? 'Actor successfully edited!' : "Wasn't able to edit the actor!",
+			type: NOTIFICATION_ACTION_TYPE.ADD,
+			payload: {
+				type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
+				message: success ? 'Actor successfully edited!' : "Wasn't able to edit the actor!",
+			},
 		})
 	}
 
