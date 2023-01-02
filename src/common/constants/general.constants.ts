@@ -27,8 +27,8 @@ export const NOTIFICATION_TYPE = {
 }
 
 export const NOTIFICATION_ACTION_TYPE = {
-	ADD_NOTIFICATION: 'ADD_NOTIFICATION',
-	REMOVE_NOTIFICATION: 'REMOVE_NOTIFICATION',
+	ADD: 'addNotification',
+	REMOVE: 'removeNotification',
 }
 
 export const ACTOR_API = 'http://localhost:3004/actors'

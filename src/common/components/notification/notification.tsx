@@ -31,7 +31,7 @@ export const Notification = ({
 }: Props) => {
 	const removeNotification = () => {
 		dispatch({
-			type: NOTIFICATION_ACTION_TYPE.REMOVE_NOTIFICATION,
+			type: NOTIFICATION_ACTION_TYPE.REMOVE,
 			id,
 		})
 	}
