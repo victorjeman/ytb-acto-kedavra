@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite'
 import { NOTIFICATION_ACTION_TYPE, NOTIFICATION_TYPE } from '~/common/constants/general.constants'
 import { IActor } from '~/features/actors/models/actor.models'
 
-import { useNotification } from '~/common/services/notification-provider/notification-provider'
+import { useNotificationDispatch } from '~/common/services/notification-provider/notification-provider'
 import {
 	useAddActorMutation,
 	useDeleteActorMutation,
@@ -28,7 +28,7 @@ import { Button } from '~/common/components/button/button'
 import { Modal } from '~/common/components/modal/modal'
 
 export const ActorListWithRedux = observer(() => {
-	const dispatch = useNotification()
+	const notificationDispatch = useNotificationDispatch()
 	const appDispatch = useAppDispatch()
 	const { actors } = useAppSelector((state) => state.actorReducer)
 	const { data } = useGetActorsQuery('')
@@ -52,10 +52,12 @@ export const ActorListWithRedux = observer(() => {
 
 	useEffect(() => {
 		if (addedActor) {
-			dispatch({
-				actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
-				type: isActorAddedSuccessfully ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
-				message: isActorAddedSuccessfully ? 'Actor successfully added!' : 'Actor add error!',
+			notificationDispatch({
+				type: NOTIFICATION_ACTION_TYPE.ADD,
+				payload: {
+					type: isActorAddedSuccessfully ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
+					message: isActorAddedSuccessfully ? 'Actor successfully added!' : 'Actor add error!',
+				},
 			})
 
 			appDispatch(addActor(addedActor))
@@ -66,12 +68,14 @@ export const ActorListWithRedux = observer(() => {
 		if (deletedActor) {
 			appDispatch(deleteActor(deletedActor))
 
-			dispatch({
-				actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
-				type: isActorDeletedSuccessfully ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
-				message: isActorDeletedSuccessfully
-					? 'Actor successfully deleted!'
-					: "Wasn't able to delete the actor",
+			notificationDispatch({
+				type: NOTIFICATION_ACTION_TYPE.ADD,
+				payload: {
+					type: isActorDeletedSuccessfully ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
+					message: isActorDeletedSuccessfully
+						? 'Actor successfully deleted!'
+						: "Wasn't able to delete the actor",
+				},
 			})
 		}
 	}, [deletedActor, isActorDeletedSuccessfully])
@@ -80,12 +84,14 @@ export const ActorListWithRedux = observer(() => {
 		if (updatedActor) {
 			appDispatch(updateActor(updatedActor))
 
-			dispatch({
-				actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
-				type: isActorUpdatedSuccessfully ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
-				message: isActorUpdatedSuccessfully
-					? 'Actor successfully edited!'
-					: "Wasn't able to edit the actor!",
+			notificationDispatch({
+				type: NOTIFICATION_ACTION_TYPE.ADD,
+				payload: {
+					type: isActorUpdatedSuccessfully ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
+					message: isActorUpdatedSuccessfully
+						? 'Actor successfully edited!'
+						: "Wasn't able to edit the actor!",
+				},
 			})
 		}
 	}, [updatedActor, isActorUpdatedSuccessfully])

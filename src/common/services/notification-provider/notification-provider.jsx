@@ -38,25 +38,27 @@ export const NotificationProvider = ({ children }) => {
 	)
 }
 
-export const useNotification = () => {
-	const dispatch = useContext(notificationContext)
+export const useNotificationDispatch = () => {
+	const notificationDispatch = useContext(notificationContext)
 
-	return ({ type, payload }) => {
+	function removeNewlyAddedNotification(notification) {
+		window.setTimeout(() => {
+			notificationDispatch({
+				payload: notification,
+				type: NOTIFICATION_ACTION_TYPE.REMOVE,
+			})
+		}, REMOVE_TIME)
+	}
+
+	function notificationDispatchEnhanced({ type, payload }) {
 		const notification = { ...payload, id: nanoid() }
 
-		function removeNotification() {
-			window.setTimeout(() => {
-				dispatch({
-					payload: notification,
-					type: NOTIFICATION_ACTION_TYPE.REMOVE,
-				})
-			}, REMOVE_TIME)
-		}
+		if (type === NOTIFICATION_ACTION_TYPE.ADD) removeNewlyAddedNotification(notification)
 
-		if (type === NOTIFICATION_ACTION_TYPE.ADD) removeNotification()
-
-		dispatch({ type: NOTIFICATION_ACTION_TYPE.ADD, payload: notification })
+		notificationDispatch({ type: NOTIFICATION_ACTION_TYPE.ADD, payload: notification })
 	}
+
+	return notificationDispatchEnhanced
 }
 
 const StyledNotificationsContainer = styled.div`

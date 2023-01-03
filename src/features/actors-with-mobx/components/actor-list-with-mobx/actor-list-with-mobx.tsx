@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 
 import { NOTIFICATION_ACTION_TYPE, NOTIFICATION_TYPE } from '~/common/constants/general.constants'
 import { IActor } from '~/features/actors/models/actor.models'
-import { useNotification } from '~/common/services/notification-provider/notification-provider'
+import { useNotificationDispatch } from '~/common/services/notification-provider/notification-provider'
 import { useMobxStore } from '~/common/store/mobx.store'
 
 import { ActorThumbnail } from '~/common/components/actor-thumbnail/actor-thumbnail'
@@ -12,9 +12,9 @@ import { Button } from '~/common/components/button/button'
 import { Modal } from '~/common/components/modal/modal'
 
 export const ActorListWithMobx = observer(() => {
-	const dispatch = useNotification()
-
+	const notificationDispatch = useNotificationDispatch()
 	const { actorStore } = useMobxStore()
+
 	const { actors, showModal, actorToUpdate } = actorStore
 
 	useEffect(() => {
@@ -26,10 +26,12 @@ export const ActorListWithMobx = observer(() => {
 
 		actorStore.setShowModal(false)
 
-		dispatch({
-			actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
-			type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
-			message: success ? 'Actor successfully added!' : 'Actor add error!',
+		notificationDispatch({
+			type: NOTIFICATION_ACTION_TYPE.ADD,
+			payload: {
+				type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
+				message: success ? 'Actor successfully added!' : 'Actor add error!',
+			},
 		})
 	}
 
@@ -38,20 +40,24 @@ export const ActorListWithMobx = observer(() => {
 
 		actorStore.setShowModal(false)
 
-		dispatch({
-			actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
-			type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
-			message: success ? 'Actor successfully edited!' : "Wasn't able to edit the actor!",
+		notificationDispatch({
+			type: NOTIFICATION_ACTION_TYPE.ADD,
+			payload: {
+				type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
+				message: success ? 'Actor successfully edited!' : "Wasn't able to edit the actor!",
+			},
 		})
 	}
 
 	const handleActorDelete = async (actor: IActor) => {
 		const { success } = await actorStore.handleActorDelete(actor)
 
-		dispatch({
-			actionType: NOTIFICATION_ACTION_TYPE.ADD_NOTIFICATION,
-			type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
-			message: success ? 'Actor successfully deleted!' : "Wasn't able to delete the actor",
+		notificationDispatch({
+			type: NOTIFICATION_ACTION_TYPE.ADD,
+			payload: {
+				type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
+				message: success ? 'Actor successfully deleted!' : "Wasn't able to delete the actor",
+			},
 		})
 	}
 
