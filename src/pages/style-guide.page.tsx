@@ -24,7 +24,7 @@ import { ActorThumbnail } from '~/common/components/actor-thumbnail/actor-thumbn
 import { Modal } from '~/common/components/modal/modal'
 import { SelectAllActors } from '~/common/components/select-all-actors/select-all-actors'
 import { CallToAction } from '~/common/components/call-to-action/call-to-action'
-import { useNotification } from '~/common/services/notification-provider/notification-provider'
+import { useNotificationDispatch } from '~/common/services/notification-provider/notification-provider'
 import { ActorForm } from '~/common/components/actor-form/actor-form'
 import { ActorFormV2 } from '~/common/components/actor-form/actor-form-v2'
 import { ActorFormV3 } from '~/common/components/actor-form/actor-form-v3'
@@ -32,18 +32,18 @@ import { ActorThumbnailV2 } from '~/common/components/actor-thumbnail/actor-thum
 import { IActor } from '~/features/actors/models/actor.models'
 
 export const StyleGuidePage = () => {
+	const notificationDispatch = useNotificationDispatch()
+
 	const [message, setMessage] = useState('hello')
 	const [showMeSomething, setShowMeSomething] = useState(false)
 	const [actors, setActors] = useState<IActor[]>([])
-
-	const dispatch = useNotification()
 
 	const sayHello = () => {
 		console.log(message)
 	}
 
 	const addNotification = () => {
-		dispatch({
+		notificationDispatch({
 			type: NOTIFICATION_ACTION_TYPE.ADD,
 			payload: {
 				type: NOTIFICATION_TYPE.SUCCESS,

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { NOTIFICATION_ACTION_TYPE, NOTIFICATION_TYPE } from 'common/constants/general.constants'
 import { IActor } from '~/features/actors/models/actor.models'
-import { useNotification } from '~/common/services/notification-provider/notification-provider'
+import { useNotificationDispatch } from '~/common/services/notification-provider/notification-provider'
 import {
 	deleteActorByIdAPI,
 	addActorAPI,
@@ -16,12 +16,12 @@ import { Button } from '~/common/components/button/button'
 import { Modal } from '~/common/components/modal/modal'
 
 export const ActorList = () => {
+	const initialActors = useActors()
+	const notificationDispatch = useNotificationDispatch()
+
 	const [showModal, setShowModal] = useState<boolean>(false)
 	const [actorToEdit, setActorToEdit] = useState<IActor | undefined>()
 	const [actors, setActors] = useState<IActor[]>([])
-
-	const initialActors = useActors()
-	const dispatch = useNotification()
 
 	useEffect(() => {
 		setActors(initialActors)
@@ -32,7 +32,7 @@ export const ActorList = () => {
 
 		setActors(data)
 
-		dispatch({
+		notificationDispatch({
 			type: NOTIFICATION_ACTION_TYPE.ADD,
 			payload: {
 				type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
@@ -47,7 +47,7 @@ export const ActorList = () => {
 		setActors(data)
 		setShowModal(false)
 
-		dispatch({
+		notificationDispatch({
 			type: NOTIFICATION_ACTION_TYPE.ADD,
 			payload: {
 				type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
@@ -67,7 +67,7 @@ export const ActorList = () => {
 		setActors(data)
 		setShowModal(false)
 
-		dispatch({
+		notificationDispatch({
 			type: NOTIFICATION_ACTION_TYPE.ADD,
 			payload: {
 				type: success ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.DANGER,
