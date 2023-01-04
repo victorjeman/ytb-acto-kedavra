@@ -3,7 +3,13 @@ import styled from 'styled-components/macro'
 import { MdOutlineModeEdit } from 'react-icons/md'
 import { GrClose } from 'react-icons/gr'
 
-import { BUTTON_TYPE, BADGE_TYPE, ICON_POSITION } from 'constants/general.constants'
+import {
+	BUTTON_TYPE,
+	BADGE_TYPE,
+	ICON_POSITION,
+	NOTIFICATION_ACTION_TYPE,
+	NOTIFICATION_TYPE,
+} from 'constants/general.constants'
 import { SIZE } from 'constants/size.constants'
 
 import { PageHeader } from 'components/page-header/page-header'
@@ -15,6 +21,7 @@ import { Badge } from 'components/badge/badge'
 import { Badges } from 'components/badges/badges'
 import { ActorThumbnail } from 'components/actor-thumbnail/actor-thumbnail'
 import { Modal } from 'components/modal/modal'
+import { useNotificationDispatch } from 'services/notification-provider'
 
 const ACTOR = {
 	score: 80,
@@ -39,6 +46,8 @@ function App() {
 	const sayHello = () => {
 		console.log(message)
 	}
+
+	const notificationDispatch = useNotificationDispatch()
 
 	return (
 		<main className='app'>
@@ -257,6 +266,57 @@ function App() {
 						</>
 					</Modal>
 				</StyledDiv2>
+			</StyledSection>
+
+			<StyledSection>
+				<StyledH2>Notifications</StyledH2>
+
+				<StyledDiv>
+					<Button
+						onClick={() =>
+							notificationDispatch({
+								type: NOTIFICATION_ACTION_TYPE.ADD,
+								payload: {
+									message: 'Success notification',
+									type: NOTIFICATION_TYPE.SUCCESS,
+								},
+							})
+						}>
+						Show success notification
+					</Button>
+				</StyledDiv>
+
+				<StyledDiv>
+					<Button
+						type={BUTTON_TYPE.SECONDARY}
+						onClick={() =>
+							notificationDispatch({
+								type: NOTIFICATION_ACTION_TYPE.ADD,
+								payload: {
+									message: 'Warning notification!',
+									type: NOTIFICATION_TYPE.WARNING,
+								},
+							})
+						}>
+						Show warning notification
+					</Button>
+				</StyledDiv>
+
+				<StyledDiv>
+					<Button
+						type={BUTTON_TYPE.HELP}
+						onClick={() =>
+							notificationDispatch({
+								type: NOTIFICATION_ACTION_TYPE.ADD,
+								payload: {
+									message: 'Danger notification',
+									type: NOTIFICATION_TYPE.DANGER,
+								},
+							})
+						}>
+						Show danger notification
+					</Button>
+				</StyledDiv>
 			</StyledSection>
 
 			<PageFooter />
