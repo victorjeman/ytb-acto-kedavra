@@ -16,6 +16,15 @@
 	--color-help: #eee5fe;
 	--color-help-dark: #b296e2;
 
+	/* NOTIFICATIONS */
+	--notification-bg-success: #e5fff2;
+	--notification-bg-warning: #fefee5;
+	--notification-bg-danger: #ffe5f2;
+
+	--notification-color-success: #00994d;
+	--notification-color-warning: #6a5300;
+	--notification-color-danger: #ed2e7e;
+
 	/* BUTTONS */
 
 	/* primary */

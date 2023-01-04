@@ -19,3 +19,14 @@ export const ICON_POSITION = {
 export const READ_MORE_LIMIT = 60
 
 export const ESCAPE_BTN_CODE = 'Escape'
+
+export const NOTIFICATION_TYPE = {
+	SUCCESS: 'success',
+	WARNING: 'warning',
+	DANGER: 'danger',
+}
+
+export const NOTIFICATION_ACTION_TYPE = {
+	ADD: 'addNotification',
+	REMOVE: 'removeNotification',
+}

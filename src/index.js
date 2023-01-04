@@ -9,6 +9,8 @@ import 'styles/variables.css'
 import { GlobalCSSSizeVariables } from 'styles/global-css-size-variables'
 import { GlobalCSSElements } from 'styles/global-css-elements'
 
+import { NotificationProvider } from 'services/notification-provider'
+
 import reportWebVitals from './reportWebVitals'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -17,7 +19,10 @@ root.render(
 	<React.StrictMode>
 		<GlobalCSSSizeVariables />
 		<GlobalCSSElements />
-		<App />
+
+		<NotificationProvider>
+			<App />
+		</NotificationProvider>
 	</React.StrictMode>,
 )
 
